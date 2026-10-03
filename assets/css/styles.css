@@ -258,7 +258,7 @@ a { color: inherit; }
 }
 
 /* Lineup */
-.lineup {
+.stages-wrap {
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 var(--gutter) clamp(56px, 9vw, 112px);
@@ -497,3 +497,90 @@ section[id] { scroll-margin-top: 72px; }
   font-weight: 700;
 }
 .site-footer__small { font-size: 0.9rem; color: var(--ink-soft); }
+
+/* ---------- The Lineup page ---------- */
+.site-header nav a[aria-current="page"] { border-color: var(--red); }
+
+.page-hero {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(40px, 7vw, 88px) var(--gutter) clamp(24px, 4vw, 40px);
+}
+.page-hero__title {
+  font: 400 clamp(3rem, 10vw, 6.5rem)/0.95 var(--display);
+  color: var(--red);
+  margin-bottom: 0.25em;
+  text-wrap: balance;
+}
+.page-hero__lede { font-size: 1.15rem; max-width: 40rem; }
+.page-hero__lede a { color: var(--red-deep); font-weight: 700; }
+
+.lineup-page {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter) clamp(56px, 9vw, 112px);
+}
+.chips {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-bottom: clamp(24px, 4vw, 40px);
+}
+.chips[hidden] { display: none; }
+.chip {
+  font: 400 0.9rem/1 var(--block);
+  padding: 10px 16px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+}
+.chip:hover { background: var(--butter); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--card); }
+
+.artists {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: clamp(18px, 3vw, 28px);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (min-width: 700px) {
+  .artists { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+}
+.artist {
+  display: flex; flex-direction: column;
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+.artist[hidden] { display: none; }
+.artist__photo {
+  width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
+  border-bottom: 3px solid var(--ink);
+}
+.artist--tba .artist__photo { filter: grayscale(0.2); }
+.artist__body { padding: clamp(12px, 2.5vw, 18px) clamp(12px, 2.5vw, 20px) clamp(14px, 3vw, 22px); display: grid; gap: 8px; min-width: 0; }
+.artist__stage {
+  justify-self: start;
+  font: 400 0.75rem/1 var(--block);
+  padding: 6px 10px; border-radius: 999px;
+  background: var(--ink); color: var(--card);
+}
+.artist__name { font: 400 clamp(1.05rem, 3.6vw, 1.4rem)/1.1 var(--display); overflow-wrap: anywhere; }
+.artist--tba .artist__name { color: var(--ink-soft); }
+.artist--coral .artist__body { border-top: 8px solid var(--coral); }
+.artist--slate .artist__body { border-top: 8px solid var(--slate); }
+.artist--mustard .artist__body { border-top: 8px solid var(--mustard); }
+.artist--blue .artist__body { border-top: 8px solid var(--blue); }
+.artist--pink .artist__body { border-top: 8px solid var(--pink); }
+.artist--butter .artist__body { border-top: 8px solid var(--butter); }
+.artists__empty { margin-top: 1rem; font-weight: 700; color: var(--ink-soft); }
+
+.lineup-cta {
+  background: var(--butter);
+  border-top: 4px solid var(--ink);
+  padding: clamp(48px, 8vw, 96px) var(--gutter);
+  text-align: center;
+  display: grid; justify-items: center; gap: 12px;
+}
+.lineup-cta h2 { font: 400 clamp(1.8rem, 5vw, 3rem)/1.05 var(--display); text-wrap: balance; }
