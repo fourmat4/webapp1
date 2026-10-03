@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Lineup · An Experience Festival</title>
+  <meta name="description" content="Who's playing An Experience Festival, June 2027 at The Grange Farm. An Experience is a music festival run by a group of friends who love dancing. June 2027 at The Grange Farm, Cambridge. Live bands, soundsystems from around the globe, a proper boozer and lots of nooks and crannies.">
+  <meta property="og:title" content="The Lineup · An Experience Festival">
+  <meta property="og:description" content="A music festival run by a group of friends who love dancing. June 2027, The Grange Farm, Cambridge.">
+  <meta property="og:image" content="assets/img/og.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#f3ede4">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/chonkyboi.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/comical-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html"><img src="assets/img/logo-600.webp" width="600" height="56" alt="An Experience"></a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="lineup.html" aria-current="page">The Lineup</a></li>
+        <li><a href="index.html#stages">Stages</a></li>
+        <li><a href="index.html#tickets">Tickets</a></li>
+        <li><a href="index.html#farm">The farm</a></li>
+        <li><a href="index.html#past">Past parties</a></li>
+        <li><a href="index.html#newsletter">Newsletter</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--small btn--red" href="https://www.skiddle.com/festivals/anexperience-festival/" target="_blank" rel="noopener">Tickets</a>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <p class="eyebrow">June 2027 · The Grange Farm</p>
+      <h1 class="page-hero__title">The Lineup</h1>
+      <p class="page-hero__lede">The bands, selectors, dancers and oddballs playing An Experience. Names are landing over the coming months, so check back or <a href="index.html#newsletter">join the list</a> to hear first.</p>
+    </section>
+
+    <section class="lineup-page" aria-label="Artists">
+      <div class="chips" role="group" aria-label="Filter by stage" hidden>
+          <button type="button" class="chip" data-filter="all" aria-pressed="true">Everyone</button>
+          <button type="button" class="chip" data-filter="main" aria-pressed="false">Main Stage</button>
+          <button type="button" class="chip" data-filter="pangea" aria-pressed="false">Pangea</button>
+          <button type="button" class="chip" data-filter="ruffage" aria-pressed="false">Ruffage</button>
+          <button type="button" class="chip" data-filter="downbeat" aria-pressed="false">Downbeat Melody x La Bomba</button>
+          <button type="button" class="chip" data-filter="gaff" aria-pressed="false">The Gaff</button>
+          <button type="button" class="chip" data-filter="folk" aria-pressed="false">For the Folk, by the Folk</button>
+          <button type="button" class="chip" data-filter="et" aria-pressed="false">Extra Terrestrial Corner</button>
+      </div>
+
+      <!--
+        To add an artist, copy one <li> below and change:
+        - data-stage: main, pangea, ruffage, downbeat, gaff, folk, et (or tba)
+        - the photo src (a 4:5 portrait, around 800x1000, saved in assets/img/artists/)
+        - alt text describing the photo, e.g. "Sinai Soundsystem behind the decks"
+        - the stage label, name and description
+        Remove the artist--tba class once it's a real act.
+      -->
+      <ul class="artists">
+        <li class="artist artist--slate" data-stage="tba">
+          <img class="artist__photo" src="assets/img/artist-placeholder.svg" width="400" height="500" alt="" loading="lazy">
+          <div class="artist__body">
+            <span class="artist__stage">Stage TBA</span>
+            <h2 class="artist__name">Sinai Soundsystem</h2>
+            <p>Description coming soon.</p>
+          </div>
+        </li>
+        <li class="artist artist--coral" data-stage="tba">
+          <img class="artist__photo" src="assets/img/artist-placeholder.svg" width="400" height="500" alt="" loading="lazy">
+          <div class="artist__body">
+            <span class="artist__stage">Stage TBA</span>
+            <h2 class="artist__name">Scotland Yard Soundsystem</h2>
+            <p>Description coming soon.</p>
+          </div>
+        </li>
+        <li class="artist artist--mustard" data-stage="downbeat">
+          <img class="artist__photo" src="assets/img/artist-placeholder.svg" width="400" height="500" alt="" loading="lazy">
+          <div class="artist__body">
+            <span class="artist__stage">Downbeat Melody x La Bomba</span>
+            <h2 class="artist__name">Downbeat Melody Soundsystem</h2>
+            <p>Description coming soon.</p>
+          </div>
+        </li>
+        <li class="artist artist--blue artist--tba" data-stage="main">
+          <img class="artist__photo" src="assets/img/artist-placeholder.svg" width="400" height="500" alt="" loading="lazy">
+          <div class="artist__body">
+            <span class="artist__stage">Main Stage</span>
+            <h2 class="artist__name">Artist TBA</h2>
+            <p>Line up to be announced…</p>
+          </div>
+        </li>
+        <li class="artist artist--pink artist--tba" data-stage="main">
+          <img class="artist__photo" src="assets/img/artist-placeholder.svg" width="400" height="500" alt="" loading="lazy">
+          <div class="artist__body">
+            <span class="artist__stage">Main Stage</span>
+            <h2 class="artist__name">Artist TBA</h2>
+            <p>Line up to be announced…</p>
+          </div>
+        </li>
+        <li class="artist artist--butter artist--tba" data-stage="gaff">
+          <img class="artist__photo" src="assets/img/artist-placeholder.svg" width="400" height="500" alt="" loading="lazy">
+          <div class="artist__body">
+            <span class="artist__stage">The Gaff</span>
+            <h2 class="artist__name">Artist TBA</h2>
+            <p>Line up to be announced…</p>
+          </div>
+        </li>
+        <li class="artist artist--slate artist--tba" data-stage="folk">
+          <img class="artist__photo" src="assets/img/artist-placeholder.svg" width="400" height="500" alt="" loading="lazy">
+          <div class="artist__body">
+            <span class="artist__stage">For the Folk, by the Folk</span>
+            <h2 class="artist__name">Artist TBA</h2>
+            <p>Line up to be announced…</p>
+          </div>
+        </li>
+        <li class="artist artist--coral artist--tba" data-stage="et">
+          <img class="artist__photo" src="assets/img/artist-placeholder.svg" width="400" height="500" alt="" loading="lazy">
+          <div class="artist__body">
+            <span class="artist__stage">Extra Terrestrial Corner</span>
+            <h2 class="artist__name">Artist TBA</h2>
+            <p>Line up to be announced…</p>
+          </div>
+        </li>
+      </ul>
+      <p class="artists__empty" hidden>No one announced for this stage yet. Watch this space.</p>
+    </section>
+
+    <section class="lineup-cta">
+      <h2>Don't wait for the full lineup</h2>
+      <p>Tickets are on Skiddle now.</p>
+      <a class="btn btn--red btn--big" href="https://www.skiddle.com/festivals/anexperience-festival/" target="_blank" rel="noopener">Get tickets on Skiddle</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="site-footer__motto">People make a place. We'll set it up. <strong>The place is yours to make.</strong></p>
+    <ul class="site-footer__links">
+      <li><a href="https://www.skiddle.com/festivals/anexperience-festival/" target="_blank" rel="noopener">Tickets</a></li>
+      <li><a href="https://www.headfirstbristol.co.uk/checkout/anexperiencepresents-" target="_blank" rel="noopener">Club shows</a></li>
+      <li><a href="https://www.instagram.com/anexperience_presents/" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+    <p class="site-footer__small">An Experience Presents · Cardboard Productions Ltd</p>
+  </footer>
+
+  <script src="assets/js/lineup.js" defer></script>
+</body>
+</html>
