@@ -1,6 +1,6 @@
 # An Experience
 
-Website for An Experience, an independent UK music festival. Six stages and a boozer.
+Website for An Experience, an independent UK music festival. Seven stages and a boozer.
 
 ## Running it
 
