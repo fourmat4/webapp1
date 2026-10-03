@@ -16,7 +16,7 @@ python3 -m http.server 8000
 - `assets/css/styles.css`: styles, with the flyer palette as CSS variables at the top
 - `assets/js/main.js`: newsletter form handling
 - `assets/img/`: web-sized exports of the festival artwork
-- `assets/fonts/`: self-hosted Rye, Bungee and Work Sans (SIL OFL)
+- `assets/fonts/`: brand fonts Chonkyboi and Comical Sans, plus Work Sans as a fallback
 
 ## Still to fill in
 

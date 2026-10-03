@@ -1,5 +1,5 @@
-Self-hosted Latin subsets from Google Fonts. All licensed under the SIL Open Font License 1.1.
+Fonts used on the site.
 
-- rye.woff2: Rye by Sorkin Type
-- bungee.woff2: Bungee by David Jonathan Ross
-- work-sans.woff2: Work Sans (variable, 100-900) by Wei Huang
+- chonkyboi.woff2: Chonkyboi, the An Experience display font (supplied by the festival)
+- comical-sans.woff2: Comical Sans, the An Experience body font (supplied by the festival)
+- work-sans.woff2: Work Sans by Wei Huang (SIL OFL). Fills characters the brand fonts lack, like apostrophes and quotes.

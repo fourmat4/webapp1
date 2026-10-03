@@ -2,15 +2,16 @@
    Palette and type lifted from the 2025 "Six stages and a boozer" flyer. */
 
 @font-face {
-  font-family: "Rye";
-  src: url("../fonts/rye.woff2") format("woff2");
+  font-family: "Chonkyboi";
+  src: url("../fonts/chonkyboi.woff2") format("woff2");
   font-display: swap;
 }
 @font-face {
-  font-family: "Bungee";
-  src: url("../fonts/bungee.woff2") format("woff2");
+  font-family: "Comical Sans";
+  src: url("../fonts/comical-sans.woff2") format("woff2");
   font-display: swap;
 }
+/* Fills glyphs the brand fonts don't have (apostrophes, quotes) */
 @font-face {
   font-family: "Work Sans";
   src: url("../fonts/work-sans.woff2") format("woff2");
@@ -19,20 +20,29 @@
 }
 
 :root {
-  --paper: #f2e9da;
-  --paper-deep: #e9dcc6;
-  --blue: #7ea2d1;
-  --blue-deep: #4f74b3;
-  --red: #e5574a;
-  --red-deep: #c63f33;
-  --yellow: #f2c649;
-  --pink: #ef9e8e;
-  --ink: #2b2340;
-  --ink-soft: #4a4160;
+  /* Brand palette */
+  --slate: #6e8eaa;
+  --mist: #afbcc6;
+  --blue: #93aabe;
+  --coral: #e15e5c;
+  --butter: #e8c563;
+  --mustard: #d9a81f;
+  --pink: #ef8b8a;
 
-  --display: "Rye", Georgia, serif;
-  --block: "Bungee", Impact, sans-serif;
-  --body: "Work Sans", system-ui, sans-serif;
+  /* Neutrals and working names */
+  --paper: #f3ede4;
+  --paper-deep: #e6e0d6;
+  --card: #fbf8f3;
+  --ink: #26303d;
+  --ink-soft: #4a5563;
+  --red: var(--coral);
+  --red-deep: #b93f3d;
+  --blue-deep: #4f6f8c;
+  --yellow: var(--butter);
+
+  --display: "Chonkyboi", "Work Sans", system-ui, sans-serif;
+  --block: "Chonkyboi", "Work Sans", system-ui, sans-serif;
+  --body: "Comical Sans", "Work Sans", system-ui, sans-serif;
 
   --gutter: clamp(16px, 4vw, 48px);
   --max: 1200px;
@@ -52,7 +62,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font: 400 1.0625rem/1.6 var(--body);
+  font: 400 1.0625rem/1.45 var(--body);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -78,7 +88,7 @@ a { color: inherit; }
 .eyebrow {
   font: 400 0.95rem/1 var(--block);
   letter-spacing: 0.04em;
-  color: var(--red);
+  color: var(--red-deep);
   margin-bottom: 0.75rem;
 }
 
@@ -99,7 +109,7 @@ a { color: inherit; }
 }
 .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
 .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
-.btn--red { background: var(--red); color: #fff; }
+.btn--red { background: var(--red); color: var(--card); }
 .btn--ghost { background: transparent; }
 .btn--small { padding: 0.7em 1.1em; font-size: 0.85rem; box-shadow: 3px 3px 0 var(--ink); }
 .btn--big { font-size: 1.15rem; padding: 1.1em 1.8em; }
@@ -113,12 +123,8 @@ a { color: inherit; }
   backdrop-filter: blur(6px);
   border-bottom: 3px solid var(--ink);
 }
-.brand {
-  font: 400 1.5rem/1 var(--display);
-  color: var(--blue-deep);
-  text-decoration: none;
-  white-space: nowrap;
-}
+.brand { display: block; text-decoration: none; }
+.brand img { height: 30px; width: auto; }
 .site-header nav ul {
   display: flex; gap: clamp(12px, 2.5vw, 32px);
   list-style: none; margin: 0; padding: 0;
@@ -150,17 +156,10 @@ a { color: inherit; }
   color: var(--ink-soft);
 }
 .hero__text { min-width: 0; }
-.hero__title {
-  font: 400 clamp(2.6rem, 10.5vw, 5.6rem)/0.92 var(--display);
-  color: var(--blue);
-  text-transform: uppercase;
-  text-shadow: 3px 3px 0 var(--ink);
-  -webkit-text-stroke: 1.5px var(--ink);
-  margin: 0.15em 0 0.2em;
-}
+.hero__title { margin: 0.2em 0 0.35em; }
+.hero__title img { width: 100%; max-width: 620px; height: auto; }
 @media (min-width: 960px) {
   .hero { grid-template-columns: 1fr 1.05fr; }
-  .hero__title { font-size: clamp(2.6rem, 4.8vw, 4rem); }
 }
 .hero__tagline {
   font: 400 clamp(1.1rem, 2.6vw, 1.45rem)/1.15 var(--block);
@@ -172,7 +171,7 @@ a { color: inherit; }
   margin: 0 0 1.75rem;
 }
 .hero__facts div {
-  background: #fff8ec;
+  background: var(--card);
   border: 3px solid var(--ink);
   border-radius: 14px;
   padding: 10px 16px;
@@ -293,9 +292,11 @@ a { color: inherit; }
 }
 .stage h3 { font: 400 1.45rem/1.1 var(--block); margin-bottom: 10px; }
 .stage--blue { background: var(--blue); }
-.stage--red { background: var(--red); color: #fff; }
+.stage--red { background: var(--red); color: var(--card); }
 .stage--yellow { background: var(--yellow); }
 .stage--pink { background: var(--pink); }
+.stage--slate { background: var(--slate); color: var(--card); }
+.stage--mustard { background: var(--mustard); }
 .stage--ink { background: var(--ink); color: var(--paper); }
 .stage--ink .stage__num { background: var(--yellow); color: var(--ink); }
 .stage--ink h3 { color: var(--yellow); }
@@ -318,7 +319,7 @@ a { color: inherit; }
   padding: 8px 14px;
   border: 2px solid var(--ink);
   border-radius: 999px;
-  background: #fff8ec;
+  background: var(--card);
   color: var(--ink-soft);
 }
 
@@ -357,10 +358,10 @@ a { color: inherit; }
 
 /* Tickets */
 .tickets {
-  background: var(--blue);
+  background: var(--slate);
   border-block: 4px solid var(--ink);
   padding: clamp(56px, 9vw, 112px) var(--gutter);
-  background-image: radial-gradient(circle at 1px 1px, rgba(43,35,64,.18) 1.5px, transparent 0);
+  background-image: radial-gradient(circle at 1px 1px, rgba(38,48,61,.18) 1.5px, transparent 0);
   background-size: 22px 22px;
 }
 .tickets__card {
@@ -413,7 +414,7 @@ section[id] { scroll-margin-top: 72px; }
   border: 3px solid var(--ink);
   border-radius: 14px;
   overflow: hidden;
-  background: #fff8ec;
+  background: var(--card);
   box-shadow: 4px 4px 0 var(--ink);
 }
 .past__grid span {
@@ -464,7 +465,7 @@ section[id] { scroll-margin-top: 72px; }
   background: var(--paper);
   color: var(--ink);
 }
-.signup input[type="email"]::placeholder { color: #8a8098; }
+.signup input[type="email"]::placeholder { color: var(--ink-soft); }
 .signup .btn { border-color: var(--paper); box-shadow: 4px 4px 0 var(--yellow); }
 .signup .btn:hover { box-shadow: 6px 6px 0 var(--yellow); }
 .signup__consent {
