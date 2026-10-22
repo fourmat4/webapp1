@@ -922,7 +922,7 @@ section[id] { scroll-margin-top: 72px; }
   .peek { display: none; }
   /* ...except the characters around the essentials and tickets, which sit
      on top of the cards so they're properly visible */
-  .info .peek, .tickets .peek { display: block; z-index: 3; }
+  .info .peek, .tickets .peek, .systems-wrap .peek { display: block; z-index: 3; }
   /* Keep them off the text: cards are left-aligned, so the bass player
      switches to the right edge beside "Camping", and the sunflower shrinks */
   .info .peek--left { --at: 55% !important; left: auto; right: min(0px, calc(50% - 50vw)); }
@@ -930,6 +930,16 @@ section[id] { scroll-margin-top: 72px; }
   .info .peek--left.is-out img { transform: translateX(24%) rotate(-12deg); }
   .info .peek--right.is-out img, .tickets .peek--right.is-out img { transform: translateX(24%) rotate(var(--tilt, 0deg)); }
   .tickets .peek--floor { --size: 84px !important; --x: 5% !important; }
+  /* Soundsystems: one speaker per card, over the photo rather than the text */
+  .systems-wrap > .peek--left { --at: 32% !important; }
+  .systems-wrap > .peek--right { --at: 54% !important; }
+  .systems-wrap > .peek--left.is-out img { transform: translateX(-24%) rotate(var(--tilt, 0deg)); }
+  .systems-wrap > .peek--right.is-out img { transform: translateX(24%) rotate(var(--tilt, 0deg)); }
+  .systems .peek--up {
+    bottom: auto; top: 77%; left: min(0px, calc(50% - 50vw)); clip-path: none;
+  }
+  .systems .peek--up img { transform: translateX(-115%) rotate(8deg); }
+  .systems .peek--up.is-out img { transform: translateX(-20%) rotate(8deg); }
 }
 /* Anchors for the ones that rise from behind something */
 .systems, .facts, .tickets__card, .newsletter__inner { position: relative; }
