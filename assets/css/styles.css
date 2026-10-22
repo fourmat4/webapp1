@@ -918,7 +918,19 @@ section[id] { scroll-margin-top: 72px; }
 /* peek--behind: no cut line at all; the card in front hides its base */
 .peek--behind { clip-path: none; }
 /* Phones: no peeking stickers (the header b-boy stays) */
-@media (max-width: 700px) { .peek { display: none; } }
+@media (max-width: 700px) {
+  .peek { display: none; }
+  /* ...except the characters around the essentials and tickets, which sit
+     on top of the cards so they're properly visible */
+  .info .peek, .tickets .peek { display: block; z-index: 3; }
+  /* Keep them off the text: cards are left-aligned, so the bass player
+     switches to the right edge beside "Camping", and the sunflower shrinks */
+  .info .peek--left { --at: 55% !important; left: auto; right: min(0px, calc(50% - 50vw)); }
+  .info .peek--left img { transform: translateX(115%) rotate(-12deg); }
+  .info .peek--left.is-out img { transform: translateX(24%) rotate(-12deg); }
+  .info .peek--right.is-out img, .tickets .peek--right.is-out img { transform: translateX(24%) rotate(var(--tilt, 0deg)); }
+  .tickets .peek--floor { --size: 84px !important; --x: 5% !important; }
+}
 /* Anchors for the ones that rise from behind something */
 .systems, .facts, .tickets__card, .newsletter__inner { position: relative; }
 .tickets, .newsletter { isolation: isolate; }
