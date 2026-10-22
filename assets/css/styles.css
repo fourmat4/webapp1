@@ -541,7 +541,9 @@ a { color: inherit; }
   .stage-panel { grid-template-columns: 1fr; align-content: start; }
   .stage-panel__photo { height: auto; min-height: 0; aspect-ratio: 4 / 3; contain: none; }
   .stage-panel__body { padding-right: 0; }
-  .stages-board.is-open .stages { display: none; }
+  .stages-board { position: relative; }
+  .stage-panel { position: absolute; left: 0; right: 0; top: var(--panel-top, 0px); }
+  .stages-board.is-open .stages { opacity: 1; visibility: visible; pointer-events: auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   .stage::before, .stage-panel__close, .stages { transition: none; }

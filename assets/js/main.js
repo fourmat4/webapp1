@@ -42,6 +42,8 @@
   if (!board) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  // On phones the panel opens over the card itself, and the page never scrolls.
+  const phone = window.matchMedia("(max-width: 720px)");
   const EASE = "cubic-bezier(.65,0,.25,1)";
   // Closing starts moving straight away; a slow start reads as a freeze.
   const CLOSE_EASE = "cubic-bezier(.3,.45,.5,1)";
@@ -155,7 +157,8 @@
     const done = function () {
       panel.hidden = true;
       finish(panel);
-      if (instant !== true) card.scrollIntoView({ block: "nearest", behavior: animates() ? "smooth" : "auto" });
+      board.style.minHeight = "";
+      if (instant !== true && !phone.matches) card.scrollIntoView({ block: "nearest", behavior: animates() ? "smooth" : "auto" });
     };
 
     if (instant === true || !animates()) return done();
@@ -189,9 +192,16 @@
     openPanel = panel;
     openButton = button;
 
-    const to = panel.getBoundingClientRect();
-    if (to.top < 0 || to.top > window.innerHeight * 0.5) {
-      panel.scrollIntoView({ block: "start", behavior: animates() ? "smooth" : "auto" });
+    if (phone.matches) {
+      // Sit the panel where the card is; grow the board if it runs past the end.
+      const top = Math.max(0, box.top);
+      panel.style.setProperty("--panel-top", top + "px");
+      board.style.minHeight = (top + panel.offsetHeight) + "px";
+    } else {
+      const to = panel.getBoundingClientRect();
+      if (to.top < 0 || to.top > window.innerHeight * 0.5) {
+        panel.scrollIntoView({ block: "start", behavior: animates() ? "smooth" : "auto" });
+      }
     }
     panel.focus({ preventScroll: true });
 
