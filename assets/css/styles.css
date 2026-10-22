@@ -824,3 +824,48 @@ section[id] { scroll-margin-top: 72px; }
   display: grid; justify-items: center; gap: 12px;
 }
 .lineup-cta h2 { font: 400 clamp(1.8rem, 5vw, 3rem)/1.05 var(--display); text-wrap: balance; }
+
+/* Peekers
+   Festival stickers that bounce out from behind the screen edge or a card
+   as their section scrolls into view, then tuck away again once it's past.
+   Each one is a clipping box; the drawing slides inside it.
+     peek--left / peek--right: from the screen edge, behind the section's content.
+       --at = how far down the section, --size = width.
+     peek--up: rises from behind the top edge of its parent (a card or grid).
+       --x = where along the edge (centre), --size = width.
+   --tilt rotates the drawing, --delay staggers it. main.js adds .is-out. */
+.has-peeks { position: relative; isolation: isolate; }
+.peek {
+  position: absolute;
+  z-index: -1;
+  width: min(var(--size, 160px), 30vw);
+  overflow: hidden;
+  pointer-events: none;
+  margin: 0; padding: 0; list-style: none;
+}
+.peek img {
+  display: block; width: 100%; height: auto;
+  transition: transform 0.35s cubic-bezier(.5, 0, .75, 0);
+}
+.peek.is-out img {
+  transition: transform 0.75s cubic-bezier(.3, 1.7, .5, 1) var(--delay, 0s);
+}
+.peek--right { top: var(--at, 10%); right: min(0px, calc(50% - 50vw)); }
+.peek--right img { transform: translateX(105%) rotate(var(--tilt, 0deg)); }
+.peek--right.is-out img { transform: translateX(32%) rotate(var(--tilt, 0deg)); }
+.peek--left { top: var(--at, 10%); left: min(0px, calc(50% - 50vw)); }
+.peek--left img { transform: translateX(-105%) rotate(var(--tilt, 0deg)); }
+.peek--left.is-out img { transform: translateX(-32%) rotate(var(--tilt, 0deg)); }
+.peek--up {
+  z-index: -1; /* stays behind headings it rises towards */
+  bottom: 100%;
+  left: calc(var(--x, 50%) - min(var(--size, 160px), 30vw) / 2);
+}
+.peek--up img { transform: translateY(105%) rotate(var(--tilt, 0deg)); transform-origin: 50% 100%; }
+.peek--up.is-out img { transform: translateY(14%) rotate(var(--tilt, 0deg)); }
+/* Anchors for the ones that rise from behind something */
+.systems, .facts, .tickets__card, .newsletter__inner { position: relative; }
+.tickets, .newsletter { isolation: isolate; }
+@media (prefers-reduced-motion: reduce) {
+  .peek img, .peek.is-out img { transition: none; }
+}

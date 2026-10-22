@@ -96,3 +96,20 @@
     if (event.key === "Escape") close();
   });
 })();
+
+// Peekers: pop out while their spot is in the middle of the screen,
+// tuck away again once it scrolls past.
+(function () {
+  const peeks = document.querySelectorAll(".peek");
+  if (!peeks.length) return;
+  if (!("IntersectionObserver" in window)) {
+    peeks.forEach(function (p) { p.classList.add("is-out"); });
+    return;
+  }
+  const io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      entry.target.classList.toggle("is-out", entry.isIntersecting);
+    });
+  }, { rootMargin: "-12% 0px -12% 0px" });
+  peeks.forEach(function (p) { io.observe(p); });
+})();
