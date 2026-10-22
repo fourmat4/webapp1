@@ -867,6 +867,7 @@ section[id] { scroll-margin-top: 72px; }
      peek--left / peek--right: from the screen edge, behind the section's content.
        --at = how far down the section, --size = width.
      peek--up: rises from behind the top edge of its parent (a card or grid).
+       Add peek--floor to rise from the parent's bottom edge instead.
        --x = where along the edge (centre), --size = width.
    --tilt rotates the drawing, --delay staggers it. main.js adds .is-out. */
 .has-peeks { position: relative; isolation: isolate; }
@@ -904,6 +905,8 @@ section[id] { scroll-margin-top: 72px; }
 }
 .peek--up img { transform: translateY(110%) rotate(var(--tilt, 0deg)); transform-origin: 50% 100%; }
 .peek--up.is-out img { transform: translateY(var(--out, 4%)) rotate(var(--tilt, 0deg)); }
+/* peek--floor: grows up from the bottom edge of its section instead */
+.peek--floor { bottom: 0; }
 /* peek--behind: no cut line at all; the card in front hides its base */
 .peek--behind { clip-path: none; }
 /* On one-column phones it would sit right under the heading text */
