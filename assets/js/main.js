@@ -52,6 +52,7 @@
   let openPanel = null;
   let openButton = null;
   let running = null;
+  let push = null; // phones: the animation that pushes the cards below down
 
   function animates() {
     return !reduceMotion.matches && typeof board.animate === "function";
@@ -135,6 +136,21 @@
     panel.getAnimations({ subtree: true }).forEach(function (a) { a.cancel(); });
   }
 
+  // Phones: the open card makes room for its panel by pushing the cards
+  // below it down (a bottom margin), and lets them back up on close.
+  // Scroll anchoring is off meanwhile so the page itself never moves.
+  function pushBelow(card, px, ms, ease) {
+    if (push) push.cancel();
+    const from = parseFloat(card.style.marginBottom) || 0;
+    card.style.marginBottom = px ? px + "px" : "";
+    document.documentElement.style.overflowAnchor = "none";
+    const settle = function () { document.documentElement.style.overflowAnchor = ""; };
+    if (!ms) { push = null; return settle(); }
+    const a = card.animate([{ marginBottom: from + "px" }, { marginBottom: px + "px" }], { duration: ms, easing: ease });
+    push = a;
+    a.finished.then(function () { if (push === a) { push = null; settle(); } }, function () {});
+  }
+
   function close(instant) {
     if (!openPanel) return;
     const panel = openPanel;
@@ -157,7 +173,7 @@
     const done = function () {
       panel.hidden = true;
       finish(panel);
-      board.style.minHeight = "";
+      if (phone.matches && card.style.marginBottom) pushBelow(card, 0, 0);
       if (instant !== true && !phone.matches) card.scrollIntoView({ block: "nearest", behavior: animates() ? "smooth" : "auto" });
     };
 
@@ -166,6 +182,13 @@
     if (midOpen) {
       const anims = panel.getAnimations({ subtree: true });
       anims.forEach(function (a) { a.reverse(); });
+      if (push && push.playState === "running") {
+        const p = push;
+        card.style.marginBottom = "";
+        document.documentElement.style.overflowAnchor = "none";
+        p.reverse();
+        p.finished.then(function () { if (push === p) { push = null; document.documentElement.style.overflowAnchor = ""; } }, function () {});
+      }
       const main = running;
       const left = main.effect.getComputedTiming().localTime || OPEN_MS;
       lastFrameOut(panel, Math.max(120, Math.min(left, OPEN_MS)));
@@ -175,6 +198,7 @@
 
     const anim = reveal(panel, clipTo(panel, cardBox(card)), false);
     running = anim;
+    if (phone.matches) pushBelow(card, 0, CLOSE_MS, CLOSE_EASE);
     anim.finished.then(function () { if (running === anim) running = null; done(); }, function () {});
   }
 
@@ -193,10 +217,11 @@
     openButton = button;
 
     if (phone.matches) {
-      // Sit the panel where the card is; grow the board if it runs past the end.
+      // Sit the panel where the card is and push the cards below out of its way.
       const top = Math.max(0, box.top);
       panel.style.setProperty("--panel-top", top + "px");
-      board.style.minHeight = (top + panel.offsetHeight) + "px";
+      const room = Math.max(0, top + panel.offsetHeight - (box.top + card.offsetHeight));
+      pushBelow(card, room, animates() ? OPEN_MS : 0, EASE);
     } else {
       const to = panel.getBoundingClientRect();
       if (to.top < 0 || to.top > window.innerHeight * 0.5) {

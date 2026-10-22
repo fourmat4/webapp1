@@ -544,6 +544,8 @@ a { color: inherit; }
   .stages-board { position: relative; }
   .stage-panel { position: absolute; left: 0; right: 0; top: var(--panel-top, 0px); }
   .stages-board.is-open .stages { opacity: 1; visibility: visible; pointer-events: auto; }
+  /* The open card sits under its panel; hide it so its tilted edge can't peek out */
+  .stages-board.is-open .stage:has(.stage__open[aria-expanded="true"]) { visibility: hidden; }
 }
 @media (prefers-reduced-motion: reduce) {
   .stage::before, .stage-panel__close, .stages { transition: none; }
