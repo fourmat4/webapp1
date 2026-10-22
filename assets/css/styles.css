@@ -487,13 +487,8 @@ a { color: inherit; }
   opacity: 0.18;
   z-index: -1;
 }
-.info__inner { max-width: var(--max); margin: 0 auto; }
-.info .eyebrow { color: var(--ink); }
-.info h2 {
-  font: 400 clamp(2.2rem, 6vw, 3.8rem)/1 var(--display);
-  color: var(--ink);
-  margin-bottom: clamp(24px, 4vw, 40px);
-}
+/* Same content edge as the other sections, whose max-width includes the gutter */
+.info__inner { max-width: calc(var(--max) - 2 * var(--gutter)); margin: 0 auto; }
 .facts {
   list-style: none; margin: 0; padding: 0;
   display: grid; gap: 16px;
