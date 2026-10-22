@@ -192,9 +192,8 @@ a { color: inherit; }
   color: var(--ink);
   max-width: 22ch;
   text-wrap: balance;
-  margin-bottom: 0.6rem;
+  margin-bottom: 1.75rem;
 }
-.hero__lede { font-size: 1.15rem; max-width: 30rem; margin-bottom: 1.75rem; }
 
 /* Ticket stub */
 .ticket {
