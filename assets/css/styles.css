@@ -984,11 +984,17 @@ section[id] { scroll-margin-top: 72px; }
   .btn--jitter, .btn--jitter:hover, .btn--jitter:focus-visible { animation: none; }
 }
 
-/* Phones: the header already shows the logo, so drop the big hero one and
-   lead with the ticket card. Kept for screen readers as the page heading. */
-@media (max-width: 700px) {
-  .hero__title {
-    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
-    overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0;
+/* Phones: keep the hero logo but tighten it up, and squash the ticket card
+   so both fit near the top: When and Where side by side, and the button
+   and link on one row. */
+@media (max-width: 519px) {
+  .hero__title { margin-bottom: 22px; }
+  .ticket__facts { grid-template-columns: 1fr 1fr; gap: 10px; padding: 12px 14px; }
+  .ticket__facts dd { font-size: 1rem; }
+  .ticket__facts small { font-size: 0.78rem; }
+  .ticket__stub {
+    grid-auto-flow: column; justify-content: space-between; align-items: center;
+    padding: 10px 14px;
   }
+  .ticket__stub .btn { padding: 0.75em 1.2em; }
 }
