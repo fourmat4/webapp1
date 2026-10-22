@@ -533,8 +533,7 @@ a { color: inherit; }
 .tickets__card .eyebrow { color: var(--red-deep); }
 .tickets__card h2 {
   font: 400 clamp(1.7rem, 5vw, 3rem)/1.05 var(--block);
-  color: var(--red);
-  -webkit-text-stroke: 1px var(--ink);
+  color: var(--red-deep);
   margin-bottom: 1.25rem;
 }
 .tickets__price {
