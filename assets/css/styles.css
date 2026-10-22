@@ -971,10 +971,16 @@ section[id] { scroll-margin-top: 72px; }
   .info .peek, .tickets .peek, .systems-wrap .peek { display: block; z-index: 3; }
   /* Keep them off the text: cards are left-aligned, so the bass player
      switches to the right edge beside "Camping", and the sunflower shrinks */
-  .info .peek--left { --at: 55% !important; left: auto; right: min(0px, calc(50% - 50vw)); }
+  /* Essentials: the bass player takes the top-right spot, and the biker sits
+     at the bottom left in some extra room, overlapping the last card a little */
+  .info { padding-bottom: 150px; }
+  .info .peek--left { --at: 2% !important; left: auto; right: min(0px, calc(50% - 50vw)); }
   .info .peek--left img { transform: translateX(115%) rotate(-12deg); }
   .info .peek--left.is-out img { transform: translateX(24%) rotate(-12deg); }
-  .info .peek--right.is-out img, .tickets .peek--right.is-out img { transform: translateX(24%) rotate(var(--tilt, 0deg)); }
+  .info .peek--right { top: auto; bottom: 12px; right: auto; left: min(0px, calc(50% - 50vw)); }
+  .info .peek--right img { transform: translateX(-115%) rotate(8deg); }
+  .info .peek--right.is-out img { transform: translateX(-6%) rotate(8deg); }
+  .tickets .peek--right { display: none; }
   .tickets .peek--floor { --size: 84px !important; --x: 5% !important; }
   /* Soundsystems: one speaker per card, over the photo rather than the text */
   .systems-wrap > .peek--left { --at: 10% !important; }
