@@ -496,7 +496,7 @@ a { color: inherit; }
   opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity 0.25s ease, visibility 0s linear 0.25s;
 }
-.stage-panel { will-change: clip-path; }
+.stage-panel { will-change: clip-path; cursor: pointer; }
 .stage-panel {
   position: relative; z-index: 2;
   border: 3px solid var(--ink);

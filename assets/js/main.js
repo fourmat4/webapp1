@@ -153,7 +153,13 @@
 
   board.addEventListener("click", function (event) {
     if (event.target.closest(".stage-panel__close")) return close();
-    if (event.target.closest(".stage-panel")) return;
+    if (event.target.closest(".stage-panel")) {
+      // Anywhere on the open panel closes it, except links and text being selected.
+      if (event.target.closest("a")) return;
+      const sel = window.getSelection && window.getSelection();
+      if (sel && !sel.isCollapsed && event.target.closest(".stage-panel").contains(sel.anchorNode)) return;
+      return close();
+    }
     const card = event.target.closest(".stage");
     if (card) open(card.querySelector(".stage__open"));
   });
