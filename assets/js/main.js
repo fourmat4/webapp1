@@ -35,29 +35,102 @@
 })();
 
 // Stage cards: clicking one opens its panel over the whole board.
+// The panel is revealed from the clicked card's outline (a clip-path, so
+// nothing gets squashed), and shrinks back into the card when closed.
 (function () {
   const board = document.querySelector(".stages-board");
   if (!board) return;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const EASE = "cubic-bezier(.65,0,.25,1)";
+  const OPEN_MS = 520;
+  const CLOSE_MS = 420;
   let openPanel = null;
   let openButton = null;
+  let running = null;
 
-  function close() {
+  function animates() {
+    return !reduceMotion.matches && typeof board.animate === "function";
+  }
+
+  // Card position relative to the board.
+  function cardBox(card) {
+    const b = board.getBoundingClientRect();
+    const c = card.getBoundingClientRect();
+    return { top: c.top - b.top, left: c.left - b.left, width: c.width, height: c.height };
+  }
+
+  // A clip-path that cuts the panel down to the card's outline, or null when
+  // the card sits outside the panel (narrow screens, where the cards stack).
+  function clipTo(panel, box) {
+    const b = board.getBoundingClientRect();
+    const p = panel.getBoundingClientRect();
+    const top = box.top - (p.top - b.top);
+    const left = box.left - (p.left - b.left);
+    const right = p.width - left - box.width;
+    const bottom = p.height - top - box.height;
+    // Tilted cards can poke a few px past the board edge; that's fine.
+    if (Math.min(top, left, right, bottom) < -40) return null;
+    const r = getComputedStyle(panel).borderTopLeftRadius;
+    return `inset(${top}px ${right}px ${bottom}px ${left}px round ${r})`;
+  }
+
+  function reveal(panel, clip, opening) {
+    const r = getComputedStyle(panel).borderTopLeftRadius;
+    const full = `inset(0px 0px 0px 0px round ${r})`;
+    const frames = clip
+      ? [{ clipPath: clip }, { clipPath: full }]
+      : [{ opacity: 0, transform: "translateY(16px) scale(.98)" }, { opacity: 1, transform: "none" }];
+    const kids = Array.from(panel.children);
+    if (opening) {
+      const a = panel.animate(frames, { duration: OPEN_MS, easing: EASE });
+      kids.forEach(function (k) {
+        k.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, delay: OPEN_MS * 0.45, easing: "ease-out", fill: "backwards" });
+      });
+      return a;
+    }
+    kids.forEach(function (k) {
+      k.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 160, easing: "ease-in", fill: "forwards" });
+    });
+    return panel.animate(frames.slice().reverse(), { duration: CLOSE_MS, easing: EASE, fill: "forwards" });
+  }
+
+  function finish(panel) {
+    panel.getAnimations({ subtree: true }).forEach(function (a) { a.cancel(); });
+  }
+
+  function close(instant) {
     if (!openPanel) return;
-    openPanel.hidden = true;
-    board.classList.remove("is-open");
-    openButton.setAttribute("aria-expanded", "false");
-    openButton.focus({ preventScroll: true });
-    openButton.closest(".stage").scrollIntoView({ block: "nearest" });
+    const panel = openPanel;
+    const button = openButton;
+    const card = button.closest(".stage");
     openPanel = openButton = null;
+    if (running) { running.cancel(); running = null; }
+    finish(panel);
+
+    board.classList.remove("is-open");
+    button.setAttribute("aria-expanded", "false");
+    button.focus({ preventScroll: true });
+
+    const done = function () {
+      panel.hidden = true;
+      finish(panel);
+    };
+
+    if (instant === true || !animates()) return done();
+
+    card.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    const anim = reveal(panel, clipTo(panel, cardBox(card)), false);
+    running = anim;
+    anim.finished.then(function () { if (running === anim) running = null; done(); }, function () {});
   }
 
   function open(button) {
-    close();
+    if (openButton === button) return;
+    close(true);
     const card = button.closest(".stage");
     const panel = document.getElementById(button.getAttribute("aria-controls"));
-    const from = card.getBoundingClientRect();
+    const box = cardBox(card);
 
     board.classList.add("is-open");
     panel.hidden = false;
@@ -67,27 +140,20 @@
 
     const to = panel.getBoundingClientRect();
     if (to.top < 0 || to.top > window.innerHeight * 0.5) {
-      panel.scrollIntoView({ block: "start" });
+      panel.scrollIntoView({ block: "start", behavior: animates() ? "smooth" : "auto" });
     }
     panel.focus({ preventScroll: true });
 
-    // Grow the panel out of the card that was clicked.
-    if (!reduceMotion.matches && panel.animate) {
-      const after = panel.getBoundingClientRect();
-      const dx = from.left - after.left;
-      const dy = from.top - after.top;
-      panel.animate(
-        [
-          { transformOrigin: "0 0", transform: `translate(${dx}px, ${dy}px) scale(${from.width / after.width}, ${from.height / after.height})`, opacity: 0.6 },
-          { transformOrigin: "0 0", transform: "none", opacity: 1 }
-        ],
-        { duration: 320, easing: "cubic-bezier(.2,.8,.2,1)" }
-      );
+    if (animates()) {
+      const anim = reveal(panel, clipTo(panel, box), true);
+      running = anim;
+      anim.finished.then(function () { if (running === anim) running = null; }, function () {});
     }
   }
 
   board.addEventListener("click", function (event) {
     if (event.target.closest(".stage-panel__close")) return close();
+    if (event.target.closest(".stage-panel")) return;
     const card = event.target.closest(".stage");
     if (card) open(card.querySelector(".stage__open"));
   });
