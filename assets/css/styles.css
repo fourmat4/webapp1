@@ -470,8 +470,8 @@ a { color: inherit; }
 .system--mustard { --sys: var(--mustard); }
 .system--pink { --sys: var(--pink); }
 
-/* Farm */
-.farm {
+/* Good to know */
+.info {
   background: var(--yellow);
   border-top: 4px solid var(--ink);
   padding: clamp(56px, 9vw, 112px) var(--gutter);
@@ -479,7 +479,7 @@ a { color: inherit; }
   overflow: hidden;
   isolation: isolate;
 }
-.farm::before {
+.info::before {
   content: "";
   position: absolute; inset: auto -8% -30% auto;
   width: min(640px, 80vw); aspect-ratio: 0.72;
@@ -487,21 +487,34 @@ a { color: inherit; }
   opacity: 0.18;
   z-index: -1;
 }
-.farm__inner { max-width: var(--max); margin: 0 auto; }
-.farm h2 {
-  font: 400 clamp(2rem, 5.5vw, 3.6rem)/1.02 var(--display);
+.info__inner { max-width: var(--max); margin: 0 auto; }
+.info .eyebrow { color: var(--ink); }
+.info h2 {
+  font: 400 clamp(2.2rem, 6vw, 3.8rem)/1 var(--display);
   color: var(--ink);
-  max-width: 18ch;
-  margin-bottom: 0.5em;
+  margin-bottom: clamp(24px, 4vw, 40px);
 }
-.farm p { font-size: 1.15rem; max-width: 34rem; }
-.farm__address {
-  display: inline-block;
-  font: 400 1rem/1.2 var(--block) !important;
-  background: var(--ink); color: var(--paper);
-  padding: 10px 16px; border-radius: 999px;
-  margin-top: 0.5rem;
+.facts {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 16px;
+  grid-template-columns: 1fr;
 }
+@media (min-width: 560px) { .facts { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 860px) { .facts { grid-template-columns: repeat(3, 1fr); } }
+.fact {
+  background: var(--card);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 4px 4px 0 var(--ink);
+  padding: 18px 20px;
+  transition: transform 0.2s cubic-bezier(.2,1.6,.4,1);
+}
+.fact:nth-child(odd) { rotate: -1deg; }
+.fact:nth-child(even) { rotate: 1deg; }
+.fact:hover { transform: translateY(-4px); }
+.fact h3 { font: 400 1.35rem/1.1 var(--block); color: var(--red-deep); margin-bottom: 6px; }
+.fact p { margin: 0; }
+@media (prefers-reduced-motion: reduce) { .fact { transition: none; } }
 
 /* Tickets */
 .tickets {
