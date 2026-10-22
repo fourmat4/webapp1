@@ -44,9 +44,9 @@
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const EASE = "cubic-bezier(.65,0,.25,1)";
   // Closing starts moving straight away; a slow start reads as a freeze.
-  const CLOSE_EASE = "cubic-bezier(.3,.6,.45,1)";
+  const CLOSE_EASE = "cubic-bezier(.3,.45,.5,1)";
   const OPEN_MS = 520;
-  const CLOSE_MS = 420;
+  const CLOSE_MS = 380;
   let openPanel = null;
   let openButton = null;
   let running = null;
@@ -94,16 +94,16 @@
     kids.forEach(function (k) {
       k.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 160, easing: "ease-in", fill: "forwards" });
     });
-    // Dissolve into the card over the second half, so there's no slow
-    // crawl at the end followed by a snap to the (tilted) card.
-    dissolve(panel, CLOSE_MS);
+    // Drop out on the very last frame. Waiting for the finished event leaves
+    // the panel sitting over the card for one extra frame, which reads as a freeze.
+    lastFrameOut(panel, CLOSE_MS);
     return panel.animate(frames.slice().reverse(), { duration: CLOSE_MS, easing: CLOSE_EASE, fill: "forwards" });
   }
 
-  function dissolve(panel, ms) {
+  function lastFrameOut(panel, ms) {
     panel.animate(
-      [{ opacity: 1 }, { opacity: 1, offset: 0.45 }, { opacity: 0 }],
-      { duration: ms, easing: "linear", fill: "forwards" }
+      [{ visibility: "visible" }, { visibility: "visible", offset: Math.max(0, 1 - 12 / ms) }, { visibility: "hidden" }],
+      { duration: ms, easing: "step-end", fill: "forwards" }
     );
   }
 
@@ -143,7 +143,7 @@
       anims.forEach(function (a) { a.reverse(); });
       const main = running;
       const left = main.effect.getComputedTiming().localTime || OPEN_MS;
-      dissolve(panel, Math.max(120, Math.min(left, OPEN_MS)));
+      lastFrameOut(panel, Math.max(120, Math.min(left, OPEN_MS)));
       main.finished.then(function () { if (openPanel !== panel) done(); }, function () {});
       return;
     }
