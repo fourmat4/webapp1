@@ -973,11 +973,13 @@ section[id] { scroll-margin-top: 72px; }
      switches to the right edge beside "Camping", and the sunflower shrinks */
   /* Essentials: the bass player takes the top-right spot, and the biker sits
      at the bottom left in some extra room, overlapping the last card a little */
-  .info { padding-bottom: 150px; }
+  /* Let the biker hang over the bottom edge, above the tickets section */
+  .info { padding-bottom: 120px; overflow-x: clip; overflow-y: visible; z-index: 1; }
+  .info::before { inset: auto -8% 0 auto; }
   .info .peek--left { --at: 2% !important; left: auto; right: min(0px, calc(50% - 50vw)); }
   .info .peek--left img { transform: translateX(115%) rotate(-12deg); }
   .info .peek--left.is-out img { transform: translateX(24%) rotate(-12deg); }
-  .info .peek--right { top: auto; bottom: 12px; right: auto; left: min(0px, calc(50% - 50vw)); }
+  .info .peek--right { top: auto; bottom: -48px; right: auto; left: min(0px, calc(50% - 50vw)); }
   .info .peek--right img { transform: translateX(-115%) rotate(8deg); }
   .info .peek--right.is-out img { transform: translateX(-6%) rotate(8deg); }
   .tickets .peek--right { display: none; }
