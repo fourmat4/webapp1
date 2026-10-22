@@ -154,7 +154,7 @@ a { color: inherit; }
   position: relative;
   overflow: hidden;
   /* Fill the screen below the sticky header, leaving the ribbon just peeking in */
-  min-height: calc(100svh - 64px - 40px);
+  min-height: calc(100svh - 64px - 10px);
   display: grid;
   align-items: center;
   isolation: isolate;
@@ -313,20 +313,25 @@ a { color: inherit; }
 
 /* Ribbon */
 .ribbon {
+  --rib-font: clamp(1.3rem, 2.4vw, 1.75rem);
+  --rib-pad: clamp(22px, 2.6vw, 30px);
+  /* Half over the bottom of the hero, half over the section below */
+  position: relative;
+  z-index: 3;
+  margin: calc((var(--rib-font) + 2 * var(--rib-pad) + 6px) / -2) -24px 0;
   background: var(--red);
   color: var(--paper);
   border-block: 3px solid var(--ink);
   overflow: hidden;
-  transform: rotate(-1.2deg);
-  margin: 8px -12px;
+  transform: rotate(-2.4deg);
 }
 .ribbon__track {
   display: flex; width: max-content;
   animation: ribbon 40s linear infinite;
 }
 .ribbon span {
-  font: 400 clamp(1.3rem, 2.4vw, 1.75rem)/1 var(--block);
-  padding: clamp(22px, 2.6vw, 30px) 0;
+  font: 400 var(--rib-font)/1 var(--block);
+  padding: var(--rib-pad) 0;
   white-space: nowrap;
 }
 .ribbon span::after { content: "✿"; margin: 0 1.6rem; color: var(--yellow); }
