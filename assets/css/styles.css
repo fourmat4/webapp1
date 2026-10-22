@@ -177,22 +177,15 @@ a { color: inherit; }
   .hero__inner { grid-template-columns: 1fr 1fr; }
 }
 .hero__text { min-width: 0; }
-.hero__title { margin: 0 0 0.3em; }
+.hero__title { margin: 0 0 clamp(24px, 4vw, 40px); }
 .hero__title img {
-  width: 100%; max-width: 640px; height: auto;
+  width: 100%; max-width: 680px; height: auto;
   transform-origin: 20% 80%;
   animation: logo-in 0.9s cubic-bezier(.2,1.6,.4,1) both;
 }
 @keyframes logo-in {
   from { transform: rotate(-6deg) scale(0.85); opacity: 0; }
   to { transform: none; opacity: 1; }
-}
-.hero__tagline {
-  font: 400 clamp(1.3rem, 3vw, 1.9rem)/1.1 var(--block);
-  color: var(--ink);
-  max-width: 22ch;
-  text-wrap: balance;
-  margin-bottom: 1.75rem;
 }
 
 /* Ticket stub */
