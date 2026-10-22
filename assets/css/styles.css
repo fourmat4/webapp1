@@ -931,7 +931,7 @@ section[id] { scroll-margin-top: 72px; }
   .info .peek--right.is-out img, .tickets .peek--right.is-out img { transform: translateX(24%) rotate(var(--tilt, 0deg)); }
   .tickets .peek--floor { --size: 84px !important; --x: 5% !important; }
   /* Soundsystems: one speaker per card, over the photo rather than the text */
-  .systems-wrap > .peek--left { --at: 32% !important; }
+  .systems-wrap > .peek--left { --at: 10% !important; }
   .systems-wrap > .peek--right { --at: 54% !important; }
   .systems-wrap > .peek--left.is-out img { transform: translateX(-24%) rotate(var(--tilt, 0deg)); }
   .systems-wrap > .peek--right.is-out img { transform: translateX(24%) rotate(var(--tilt, 0deg)); }
