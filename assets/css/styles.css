@@ -111,6 +111,8 @@ a { color: inherit; }
 .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
 .btn--red { background: var(--red); color: var(--card); }
 .btn--ghost { background: transparent; }
+/* Not a link yet: looks like a button but doesn't react */
+.btn--soon, .btn--soon:hover, .btn--soon:active { cursor: default; transform: none; box-shadow: 4px 4px 0 var(--ink); }
 .btn--small { padding: 0.7em 1.1em; font-size: 0.85rem; box-shadow: 3px 3px 0 var(--ink); }
 .btn--big { font-size: 1.15rem; padding: 1.1em 1.8em; }
 
