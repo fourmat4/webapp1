@@ -913,8 +913,8 @@ section[id] { scroll-margin-top: 72px; }
 .peek--floor { bottom: 0; }
 /* peek--behind: no cut line at all; the card in front hides its base */
 .peek--behind { clip-path: none; }
-/* On one-column phones it would sit right under the heading text */
-@media (max-width: 560px) { .systems .peek { display: none; } }
+/* Phones: no peeking stickers (the header b-boy stays) */
+@media (max-width: 700px) { .peek { display: none; } }
 /* Anchors for the ones that rise from behind something */
 .systems, .facts, .tickets__card, .newsletter__inner { position: relative; }
 .tickets, .newsletter { isolation: isolate; }
