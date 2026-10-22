@@ -325,11 +325,11 @@ a { color: inherit; }
   animation: ribbon 40s linear infinite;
 }
 .ribbon span {
-  font: 400 1.05rem/1 var(--block);
-  padding: 14px 0;
+  font: 400 clamp(1.3rem, 2.4vw, 1.75rem)/1 var(--block);
+  padding: clamp(22px, 2.6vw, 30px) 0;
   white-space: nowrap;
 }
-.ribbon span::after { content: "✿"; margin: 0 1.2rem; color: var(--yellow); }
+.ribbon span::after { content: "✿"; margin: 0 1.6rem; color: var(--yellow); }
 @keyframes ribbon { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) {
   .ribbon__track { animation: none; }
