@@ -542,6 +542,7 @@ a { color: inherit; }
   .stage-panel__photo { height: auto; min-height: 0; aspect-ratio: 4 / 3; contain: none; }
   .stage-panel__body { padding-right: 0; }
   .stages-board { position: relative; }
+  .stages .stage { height: var(--stage-h, auto); }
   .stage-panel { position: absolute; left: 0; right: 0; top: var(--panel-top, 0px); }
   .stages-board.is-open .stages { opacity: 1; visibility: visible; pointer-events: auto; }
   /* The open card sits under its panel; hide it so its tilted edge can't peek out */

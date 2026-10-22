@@ -237,6 +237,20 @@
     }
   }
 
+  // Phones: every closed card is as tall as the tallest one.
+  const list = board.querySelector(".stages");
+  function evenHeights() {
+    list.style.removeProperty("--stage-h");
+    if (!phone.matches) return;
+    let tallest = 0;
+    list.querySelectorAll(".stage").forEach(function (c) { tallest = Math.max(tallest, c.offsetHeight); });
+    list.style.setProperty("--stage-h", tallest + "px");
+  }
+  evenHeights();
+  window.addEventListener("resize", evenHeights);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(evenHeights);
+  window.addEventListener("load", evenHeights);
+
   board.addEventListener("click", function (event) {
     if (event.target.closest(".stage-panel__close")) return close();
     if (event.target.closest(".stage-panel")) {
