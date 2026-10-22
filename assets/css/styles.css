@@ -261,7 +261,7 @@ a { color: inherit; }
   right: clamp(8px, 4vw, 64px);
   /* fist centre sits 15% up from the image bottom; line it up with the ribbon's middle */
   bottom: calc(42px - var(--w) * 1.342 * 0.15);
-  transform-origin: 86% 85%;
+  transform-origin: 14% 85%;
   filter: drop-shadow(6px 6px 0 rgba(38, 48, 61, 0.25));
   animation: rider-swing 4.5s ease-in-out infinite;
   pointer-events: none;
