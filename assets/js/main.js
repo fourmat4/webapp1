@@ -43,6 +43,8 @@
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const EASE = "cubic-bezier(.65,0,.25,1)";
+  // Closing starts moving straight away; a slow start reads as a freeze.
+  const CLOSE_EASE = "cubic-bezier(.25,.75,.3,1)";
   const OPEN_MS = 520;
   const CLOSE_MS = 420;
   let openPanel = null;
@@ -92,7 +94,7 @@
     kids.forEach(function (k) {
       k.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 160, easing: "ease-in", fill: "forwards" });
     });
-    return panel.animate(frames.slice().reverse(), { duration: CLOSE_MS, easing: EASE, fill: "forwards" });
+    return panel.animate(frames.slice().reverse(), { duration: CLOSE_MS, easing: CLOSE_EASE, fill: "forwards" });
   }
 
   function finish(panel) {
@@ -105,8 +107,14 @@
     const button = openButton;
     const card = button.closest(".stage");
     openPanel = openButton = null;
-    if (running) { running.cancel(); running = null; }
-    finish(panel);
+    // Closed while still opening: play the opening backwards from where it is,
+    // rather than snapping to full size first.
+    const midOpen = running && running.playState === "running" && instant !== true;
+    if (!midOpen) {
+      if (running) running.cancel();
+      running = null;
+      finish(panel);
+    }
 
     board.classList.remove("is-open");
     button.setAttribute("aria-expanded", "false");
@@ -115,11 +123,19 @@
     const done = function () {
       panel.hidden = true;
       finish(panel);
+      if (instant !== true) card.scrollIntoView({ block: "nearest", behavior: animates() ? "smooth" : "auto" });
     };
 
     if (instant === true || !animates()) return done();
 
-    card.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    if (midOpen) {
+      const anims = panel.getAnimations({ subtree: true });
+      anims.forEach(function (a) { a.reverse(); });
+      const main = running;
+      main.finished.then(function () { if (openPanel !== panel) done(); }, function () {});
+      return;
+    }
+
     const anim = reveal(panel, clipTo(panel, cardBox(card)), false);
     running = anim;
     anim.finished.then(function () { if (running === anim) running = null; done(); }, function () {});
@@ -132,6 +148,7 @@
     const panel = document.getElementById(button.getAttribute("aria-controls"));
     const box = cardBox(card);
 
+    finish(panel);
     board.classList.add("is-open");
     panel.hidden = false;
     button.setAttribute("aria-expanded", "true");
