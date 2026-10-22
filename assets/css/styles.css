@@ -246,30 +246,32 @@ a { color: inherit; }
    which sit on its left so the character has the right side */
 .hero__stage { aspect-ratio: 1 / 0.9; }
 .hero__stage .sticker--stages { right: auto; left: 8%; bottom: auto; top: 48%; }
-.hero__stage .sticker--age { left: 34%; }
+.hero__stage .sticker--age { left: 22%; }
 @media (max-width: 959px) { .hero__stage { aspect-ratio: 2 / 1; } }
 
-/* Character clinging to the right edge of the window, by the scroll bar.
-   The hero clips it, so the fist looks wrapped round the edge.
-   It swings gently from the hand. */
+/* Character holding on to the scrolling ribbon under the hero.
+   The hero and ribbon share a wrapper so the character can sit across both,
+   with its fist over the ribbon. It swings gently from the hand. */
+.hero-wrap { position: relative; overflow-x: clip; }
 .hero__rider {
   --w: clamp(200px, 30vw, 420px);
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   width: var(--w); height: auto;
-  right: calc(var(--w) * -0.11);
-  bottom: clamp(24px, 6vw, 72px);
+  right: clamp(8px, 4vw, 64px);
+  /* fist centre sits 15% up from the image bottom; line it up with the ribbon's middle */
+  bottom: calc(42px - var(--w) * 1.342 * 0.15);
   transform-origin: 86% 85%;
   filter: drop-shadow(6px 6px 0 rgba(38, 48, 61, 0.25));
   animation: rider-swing 4.5s ease-in-out infinite;
   pointer-events: none;
 }
 @keyframes rider-swing {
-  0%, 100% { rotate: -3deg; }
-  50% { rotate: 4deg; }
+  0%, 100% { rotate: -2deg; }
+  50% { rotate: 3deg; }
 }
 @media (max-width: 959px) {
-  .hero__rider { --w: clamp(170px, 46vw, 330px); bottom: 12px; }
+  .hero__rider { --w: clamp(170px, 46vw, 330px); }
   .hero__stage .sticker--stages { left: 30%; top: 38%; }
   .hero__stage .sticker--age { left: 6%; }
 }
