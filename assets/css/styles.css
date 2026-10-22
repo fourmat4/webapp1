@@ -491,12 +491,12 @@ a { color: inherit; }
 }
 .stage:hover::before { transform: rotate(90deg); }
 
-.stages { transition: opacity 0.35s ease 0.08s; }
+.stages { transition: opacity 0.3s ease; will-change: opacity; }
 .stages-board.is-open .stages {
   opacity: 0; visibility: hidden; pointer-events: none;
   transition: opacity 0.25s ease, visibility 0s linear 0.25s;
 }
-.stage-panel { will-change: clip-path; cursor: pointer; }
+.stage-panel { will-change: clip-path, opacity; cursor: pointer; }
 .stage-panel {
   position: relative; z-index: 2;
   border: 3px solid var(--ink);
