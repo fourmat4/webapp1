@@ -242,38 +242,19 @@ a { color: inherit; }
 
 /* Artwork and stickers */
 .hero__stage { position: relative; padding: 18px; }
-/* The square artwork is gone for now, so the stage box keeps its size for the stickers,
-   which sit on its left so the character has the right side */
-.hero__stage { aspect-ratio: 1 / 0.9; }
-.hero__stage .sticker--stages { right: auto; left: 8%; bottom: auto; top: 48%; }
-.hero__stage .sticker--age { left: 22%; }
-@media (max-width: 959px) { .hero__stage { aspect-ratio: 2 / 1; } }
-
-/* Character holding on to the scrolling ribbon under the hero.
-   The hero and ribbon share a wrapper so the character can sit across both,
-   with its fist over the ribbon. It swings gently from the hand. */
-.hero-wrap { position: relative; overflow-x: clip; }
-.hero__rider {
-  --w: clamp(200px, 30vw, 420px);
-  position: absolute;
-  z-index: 2;
-  width: var(--w); height: auto;
-  right: clamp(8px, 4vw, 64px);
-  /* fist centre sits 15% up from the image bottom; line it up with the ribbon's middle */
-  bottom: calc(42px - var(--w) * 1.342 * 0.15);
-  transform-origin: 14% 85%;
-  filter: drop-shadow(6px 6px 0 rgba(38, 48, 61, 0.25));
-  animation: rider-swing 4.5s ease-in-out infinite;
-  pointer-events: none;
+/* B-boy illustration, rocking gently on his planted hand */
+.hero__bboy {
+  display: block;
+  width: min(100%, 440px); height: auto;
+  margin: 0 auto;
+  transform-origin: 75% 92%;
+  animation: bboy-rock 3.5s ease-in-out infinite;
 }
-@keyframes rider-swing {
-  0%, 100% { rotate: -2deg; }
-  50% { rotate: 3deg; }
-}
-@media (max-width: 959px) {
-  .hero__rider { --w: clamp(170px, 46vw, 330px); }
-  .hero__stage .sticker--stages { left: 30%; top: 38%; }
-  .hero__stage .sticker--age { left: 6%; }
+@media (max-width: 959px) { .hero__bboy { width: min(80%, 320px); } }
+.hero__stage .sticker--age { left: auto; bottom: auto; right: 6%; top: 18%; }
+@keyframes bboy-rock {
+  0%, 100% { rotate: 0deg; }
+  50% { rotate: -2.5deg; }
 }
 .sticker {
   position: absolute;
@@ -309,7 +290,7 @@ a { color: inherit; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__sun, .hero__rider, .hero__title img { animation: none; }
+  .hero__sun, .hero__bboy, .hero__title img { animation: none; }
 }
 
 /* Ribbon */
