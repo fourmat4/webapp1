@@ -370,13 +370,6 @@ a { color: inherit; }
 .note--pink { --n: var(--pink); }
 .note--mustard { --n: var(--mustard); }
 .note--blue { --n: var(--blue); }
-.ethos__alive {
-  font: 400 clamp(1.5rem, 4vw, 2.6rem)/1.1 var(--display);
-  color: var(--ink);
-  text-wrap: balance;
-  margin: 0;
-}
-.ethos__alive span { color: var(--red); }
 @media (prefers-reduced-motion: reduce) {
   .note { transition: none; }
 }
