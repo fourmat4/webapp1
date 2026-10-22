@@ -974,7 +974,7 @@ section[id] { scroll-margin-top: 72px; }
   /* Essentials: the bass player takes the top-right spot, and the biker sits
      at the bottom left in some extra room, overlapping the last card a little */
   /* Let the biker hang over the bottom edge, above the tickets section */
-  .info { padding-bottom: 120px; overflow-x: clip; overflow-y: visible; z-index: 1; }
+  .info { padding-bottom: calc(min(260px, 30vw) * 1.41 - 16px); overflow-x: clip; overflow-y: visible; z-index: 1; }
   .info::before { inset: auto -8% 0 auto; }
   .info .peek--left { --at: 2% !important; left: auto; right: min(0px, calc(50% - 50vw)); }
   .info .peek--left img { transform: translateX(115%) rotate(-12deg); }
