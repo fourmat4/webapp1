@@ -987,15 +987,6 @@ section[id] { scroll-margin-top: 72px; }
   .systems .peek--up img { transform: translateX(-115%) rotate(8deg); }
   .systems .peek--up.is-out img { transform: translateX(-20%) rotate(8deg); }
 }
-/* One-column phones: the buildings pop out over the empty lower halves of
-   the two "Stage TBA" cards, the warehouse on the left, the Boozer on the right */
-@media (max-width: 559px) {
-  .stages-wrap > .peek { display: block; z-index: 3; }
-  .stages-wrap > .peek--left { --at: 74.6% !important; }
-  .stages-wrap > .peek--right { --at: 82.6% !important; }
-  .stages-wrap > .peek--left.is-out img { transform: translateX(-22%) rotate(var(--tilt, 0deg)); }
-  .stages-wrap > .peek--right.is-out img { transform: translateX(22%) rotate(var(--tilt, 0deg)); }
-}
 /* Anchors for the ones that rise from behind something */
 .systems, .facts, .tickets__card, .newsletter__inner { position: relative; }
 .tickets, .newsletter { isolation: isolate; }
