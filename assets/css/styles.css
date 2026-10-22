@@ -124,7 +124,14 @@ a { color: inherit; }
   border-bottom: 3px solid var(--ink);
 }
 .brand { display: block; text-decoration: none; }
-.brand img { height: 18px; width: auto; }
+.brand img {
+  height: 18px; width: auto;
+  /* Ink outline plus a small offset shadow, to match the card style */
+  filter:
+    drop-shadow(1px 0 0 var(--ink)) drop-shadow(-1px 0 0 var(--ink))
+    drop-shadow(0 1px 0 var(--ink)) drop-shadow(0 -1px 0 var(--ink))
+    drop-shadow(2px 2px 0 var(--ink));
+}
 .site-header nav ul {
   display: flex; gap: clamp(12px, 2.5vw, 32px);
   list-style: none; margin: 0; padding: 0;
@@ -180,6 +187,10 @@ a { color: inherit; }
 .hero__title { margin: 0 0 clamp(40px, 6vw, 72px); }
 .hero__title img {
   width: 100%; max-width: 680px; height: auto;
+  filter:
+    drop-shadow(2px 0 0 var(--ink)) drop-shadow(-2px 0 0 var(--ink))
+    drop-shadow(0 2px 0 var(--ink)) drop-shadow(0 -2px 0 var(--ink))
+    drop-shadow(5px 5px 0 var(--ink));
   transform-origin: 20% 80%;
   animation: logo-in 0.9s cubic-bezier(.2,1.6,.4,1) both;
 }
