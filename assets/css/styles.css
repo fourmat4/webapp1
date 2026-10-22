@@ -868,7 +868,11 @@ section[id] { scroll-margin-top: 72px; }
   clip-path: inset(-200px -200px 0 -200px);
 }
 .peek--up img { transform: translateY(110%) rotate(var(--tilt, 0deg)); transform-origin: 50% 100%; }
-.peek--up.is-out img { transform: translateY(4%) rotate(var(--tilt, 0deg)); }
+.peek--up.is-out img { transform: translateY(var(--out, 4%)) rotate(var(--tilt, 0deg)); }
+/* peek--behind: no cut line at all; the card in front hides its base */
+.peek--behind { clip-path: none; }
+/* On one-column phones it would sit right under the heading text */
+@media (max-width: 560px) { .systems .peek { display: none; } }
 /* Anchors for the ones that rise from behind something */
 .systems, .facts, .tickets__card, .newsletter__inner { position: relative; }
 .tickets, .newsletter { isolation: isolate; }
