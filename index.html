@@ -37,38 +37,46 @@
   <main id="main">
     <!-- HERO -->
     <section class="hero" id="top">
-      <div class="hero__text">
-        <p class="hero__kicker">An independent UK music festival</p>
-        <h1 class="hero__title"><img src="assets/img/logo-1400.webp" width="1400" height="130" alt="An Experience"></h1>
-        <p class="hero__tagline">A music festival run by a group of friends who love dancing</p>
-        <p class="hero__lede">We aren't all amazing dancers, but it is our favourite thing to do.</p>
+      <div class="hero__sun" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <div class="hero__text">
+          <h1 class="hero__title"><img src="assets/img/logo-1400.webp" width="1400" height="130" alt="An Experience"></h1>
+          <p class="hero__tagline">A music festival run by a group of friends who love dancing</p>
+          <p class="hero__lede">We aren't all amazing dancers, but it is our favourite thing to do.</p>
 
-        <dl class="hero__facts">
-          <div>
-            <dt>When</dt>
-            <!-- Exact dates not announced yet: update when they are -->
-            <dd>June 2027 <small>Exact dates TBA</small></dd>
+          <div class="ticket">
+            <dl class="ticket__facts">
+              <div>
+                <dt>When</dt>
+                <!-- Exact dates not announced yet: update when they are -->
+                <dd>June 2027 <small>Exact dates TBA</small></dd>
+              </div>
+              <div>
+                <dt>Where</dt>
+                <dd>The Grange Farm <small>Cambridge, PE28 2PH</small></dd>
+              </div>
+            </dl>
+            <div class="ticket__stub">
+              <a class="btn btn--red" href="https://www.skiddle.com/festivals/anexperience-festival/" target="_blank" rel="noopener">Get Tickets!</a>
+              <a class="ticket__link" href="#stages">See the stages</a>
+            </div>
           </div>
-          <div>
-            <dt>Where</dt>
-            <dd>The Grange Farm <small>Cambridge, PE28 2PH</small></dd>
-          </div>
-        </dl>
+        </div>
 
-        <div class="hero__ctas">
-          <a class="btn btn--red" href="https://www.skiddle.com/festivals/anexperience-festival/" target="_blank" rel="noopener">Get Tickets!</a>
-          <a class="btn btn--ghost" href="#stages">See the stages</a>
+        <div class="hero__stage">
+          <figure class="hero__art">
+            <img
+              src="assets/img/hero-art-1200.webp"
+              srcset="assets/img/hero-art-700.webp 700w, assets/img/hero-art-1200.webp 1200w"
+              sizes="(min-width: 960px) 50vw, 100vw"
+              width="1200" height="1190"
+              alt="Illustrated festival map: a striped big top, a pink pub called the Boozer, a lake with a sea serpent, woods, flowers and a stack of speakers.">
+          </figure>
+          <span class="sticker sticker--date" aria-hidden="true">June<br>2027</span>
+          <span class="sticker sticker--stages" aria-hidden="true">7 stages<br>&amp; a boozer</span>
+          <span class="sticker sticker--age" aria-hidden="true">18+</span>
         </div>
       </div>
-
-      <figure class="hero__art">
-        <img
-          src="assets/img/hero-art-1200.webp"
-          srcset="assets/img/hero-art-700.webp 700w, assets/img/hero-art-1200.webp 1200w"
-          sizes="(min-width: 960px) 50vw, 100vw"
-          width="1200" height="1190"
-          alt="Illustrated festival map: a striped big top, a pink pub called the Boozer, a lake with a sea serpent, woods, flowers and a stack of speakers.">
-      </figure>
     </section>
 
     <div class="ribbon" aria-hidden="true">
