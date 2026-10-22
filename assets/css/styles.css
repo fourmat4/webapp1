@@ -839,7 +839,6 @@ section[id] { scroll-margin-top: 72px; }
   position: absolute;
   z-index: -1;
   width: min(var(--size, 160px), 30vw);
-  overflow: hidden;
   pointer-events: none;
   margin: 0; padding: 0; list-style: none;
 }
@@ -850,19 +849,26 @@ section[id] { scroll-margin-top: 72px; }
 .peek.is-out img {
   transition: transform 0.75s cubic-bezier(.3, 1.7, .5, 1) var(--delay, 0s);
 }
+/* Side ones hide past the edge of the screen (the page clips anything wider
+   than the window), then bounce almost fully into view */
 .peek--right { top: var(--at, 10%); right: min(0px, calc(50% - 50vw)); }
-.peek--right img { transform: translateX(105%) rotate(var(--tilt, 0deg)); }
-.peek--right.is-out img { transform: translateX(32%) rotate(var(--tilt, 0deg)); }
+.peek--right img { transform: translateX(115%) rotate(var(--tilt, 0deg)); }
+.peek--right.is-out img { transform: translateX(6%) rotate(var(--tilt, 0deg)); }
 .peek--left { top: var(--at, 10%); left: min(0px, calc(50% - 50vw)); }
-.peek--left img { transform: translateX(-105%) rotate(var(--tilt, 0deg)); }
-.peek--left.is-out img { transform: translateX(-32%) rotate(var(--tilt, 0deg)); }
+.peek--left img { transform: translateX(-115%) rotate(var(--tilt, 0deg)); }
+.peek--left.is-out img { transform: translateX(-6%) rotate(var(--tilt, 0deg)); }
+@media (max-width: 700px) {
+  .peek--right.is-out img { transform: translateX(38%) rotate(var(--tilt, 0deg)); }
+  .peek--left.is-out img { transform: translateX(-38%) rotate(var(--tilt, 0deg)); }
+}
+/* Rising ones are only cut along the edge they rise from */
 .peek--up {
-  z-index: -1; /* stays behind headings it rises towards */
   bottom: 100%;
   left: calc(var(--x, 50%) - min(var(--size, 160px), 30vw) / 2);
+  clip-path: inset(-200px -200px 0 -200px);
 }
-.peek--up img { transform: translateY(105%) rotate(var(--tilt, 0deg)); transform-origin: 50% 100%; }
-.peek--up.is-out img { transform: translateY(14%) rotate(var(--tilt, 0deg)); }
+.peek--up img { transform: translateY(110%) rotate(var(--tilt, 0deg)); transform-origin: 50% 100%; }
+.peek--up.is-out img { transform: translateY(4%) rotate(var(--tilt, 0deg)); }
 /* Anchors for the ones that rise from behind something */
 .systems, .facts, .tickets__card, .newsletter__inner { position: relative; }
 .tickets, .newsletter { isolation: isolate; }
