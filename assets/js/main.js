@@ -285,3 +285,28 @@
   }, { rootMargin: "-12% 0px -12% 0px" });
   peeks.forEach(function (p) { io.observe(p); });
 })();
+
+// Burger menu (narrow screens): toggles the nav drop-down; closes on a
+// link tap, Escape, or a tap anywhere else.
+(function () {
+  const header = document.querySelector(".site-header");
+  const burger = header && header.querySelector(".burger");
+  if (!burger) return;
+  function set(open) {
+    header.classList.toggle("is-menu-open", open);
+    burger.setAttribute("aria-expanded", String(open));
+    burger.setAttribute("aria-label", open ? "Close menu" : "Menu");
+  }
+  burger.addEventListener("click", function () {
+    set(burger.getAttribute("aria-expanded") !== "true");
+  });
+  header.querySelectorAll("nav a").forEach(function (a) {
+    a.addEventListener("click", function () { set(false); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && header.classList.contains("is-menu-open")) { set(false); burger.focus(); }
+  });
+  document.addEventListener("click", function (e) {
+    if (!header.contains(e.target)) set(false);
+  });
+})();
