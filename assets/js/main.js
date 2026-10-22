@@ -73,19 +73,40 @@
     const bottom = p.height - top - box.height;
     // Tilted cards can poke a few px past the board edge; that's fine.
     if (Math.min(top, left, right, bottom) < -40) return null;
-    const r = getComputedStyle(panel).borderTopLeftRadius;
-    return `inset(${top}px ${right}px ${bottom}px ${left}px round ${r})`;
+    return { top: top, right: right, bottom: bottom, left: left };
   }
 
-  function reveal(panel, clip, opening) {
-    const r = getComputedStyle(panel).borderTopLeftRadius;
-    const full = `inset(0px 0px 0px 0px round ${r})`;
-    const frames = clip
-      ? [{ clipPath: clip }, { clipPath: full }]
+  // A black outline that tracks the clip, so the border shows the whole way.
+  function ring(panel) {
+    let el = panel.querySelector(".stage-panel__ring");
+    if (!el) {
+      el = document.createElement("span");
+      el.className = "stage-panel__ring";
+      el.setAttribute("aria-hidden", "true");
+      panel.appendChild(el);
+    }
+    return el;
+  }
+
+  function reveal(panel, box, opening) {
+    const cs = getComputedStyle(panel);
+    const r = cs.borderTopLeftRadius;
+    const bw = parseFloat(cs.borderTopWidth) || 0;
+    const ins = function (b) { return `inset(${b.top}px ${b.right}px ${b.bottom}px ${b.left}px round ${r})`; };
+    const zero = { top: 0, right: 0, bottom: 0, left: 0 };
+    const frames = box
+      ? [{ clipPath: ins(box) }, { clipPath: ins(zero) }]
       : [{ opacity: 0, transform: "translateY(16px) scale(.98)" }, { opacity: 1, transform: "none" }];
-    const kids = Array.from(panel.children);
+    // The ring is positioned from the padding edge, so shift it out by the border width.
+    const pos = function (b) {
+      return { top: (b.top - bw) + "px", right: (b.right - bw) + "px", bottom: (b.bottom - bw) + "px", left: (b.left - bw) + "px" };
+    };
+    const ringFrames = box ? [pos(box), pos(zero)] : null;
+    const el = box ? ring(panel) : null;
+    const kids = Array.from(panel.children).filter(function (k) { return k !== el; });
     if (opening) {
       const a = panel.animate(frames, { duration: OPEN_MS, easing: EASE });
+      if (el) el.animate(ringFrames, { duration: OPEN_MS, easing: EASE });
       kids.forEach(function (k) {
         k.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, delay: OPEN_MS * 0.45, easing: "ease-out", fill: "backwards" });
       });
@@ -97,6 +118,7 @@
     // Drop out on the very last frame. Waiting for the finished event leaves
     // the panel sitting over the card for one extra frame, which reads as a freeze.
     lastFrameOut(panel, CLOSE_MS);
+    if (el) el.animate(ringFrames.slice().reverse(), { duration: CLOSE_MS, easing: CLOSE_EASE, fill: "forwards" });
     return panel.animate(frames.slice().reverse(), { duration: CLOSE_MS, easing: CLOSE_EASE, fill: "forwards" });
   }
 
