@@ -153,6 +153,10 @@ a { color: inherit; }
 .hero {
   position: relative;
   overflow: hidden;
+  /* Fill the screen below the sticky header, leaving the ribbon just peeking in */
+  min-height: calc(100svh - 64px - 40px);
+  display: grid;
+  align-items: center;
   isolation: isolate;
   padding: clamp(28px, 5vw, 64px) var(--gutter) clamp(48px, 7vw, 88px);
 }
@@ -173,7 +177,8 @@ a { color: inherit; }
 }
 
 .hero__inner {
-  max-width: var(--max);
+  width: 100%;
+  max-width: min(1560px, max(var(--max), 82vw)); /* spreads out on big screens */
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
@@ -184,7 +189,7 @@ a { color: inherit; }
   .hero__inner { grid-template-columns: 1fr 1fr; }
 }
 /* Logo and ticket share one column width so the logo sits centred over the ticket */
-.hero__text { min-width: 0; width: 100%; max-width: 36rem; justify-self: center; }
+.hero__text { min-width: 0; width: 100%; max-width: clamp(36rem, 38vw, 44rem); justify-self: center; }
 .hero__title { margin: 0 0 clamp(40px, 6vw, 72px); text-align: center; }
 .hero__title img {
   display: inline-block;
@@ -246,7 +251,7 @@ a { color: inherit; }
    Two layers drawn on the same canvas: his raised arm (behind), and everything else. */
 .hero__bboy {
   position: relative;
-  width: min(100%, 440px);
+  width: min(100%, 560px, calc(62svh * 1803 / 2221));
   aspect-ratio: 1803 / 2221;
   margin: 0 auto;
   transform-origin: 75% 92%;
