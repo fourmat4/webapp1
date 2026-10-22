@@ -310,3 +310,27 @@
     if (!header.contains(e.target)) set(false);
   });
 })();
+
+// Always open at the top. Jump links on this page ("See the stages", the nav)
+// scroll without leaving #stages etc. in the address, so a reload or a
+// revisit doesn't land halfway down. Links in from the lineup page still work.
+(function () {
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  document.addEventListener("click", function (event) {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link || event.defaultPrevented) return;
+    const id = link.getAttribute("href").slice(1);
+    const target = id === "top" ? document.body : document.getElementById(id);
+    if (!target) return;
+    event.preventDefault();
+    if (id === "top") window.scrollTo({ top: 0, behavior: "smooth" });
+    else target.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (id === "main") target.focus({ preventScroll: true });
+  });
+  const arrived = location.hash && document.getElementById(location.hash.slice(1));
+  if (arrived) {
+    // Arrived from another page's link: go there once, then tidy the address.
+    history.replaceState(null, "", location.pathname + location.search);
+    window.addEventListener("load", function () { arrived.scrollIntoView({ block: "start" }); });
+  }
+})();
