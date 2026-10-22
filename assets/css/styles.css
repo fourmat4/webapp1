@@ -902,3 +902,41 @@ section[id] { scroll-margin-top: 72px; }
 @media (prefers-reduced-motion: reduce) {
   .peek img, .peek.is-out img { transition: none; }
 }
+
+/* Hero "Get Tickets!": fidgety and impatient, like it's dying to be clicked.
+   A constant little tremble, a big excited wiggle every couple of seconds,
+   and full-on bouncing when you hover. Uses translate/rotate/scale so the
+   usual .btn hover lift still works on top. */
+.btn--jitter {
+  animation:
+    jitter-tremble 0.28s steps(2, jump-none) infinite,
+    jitter-burst 2.4s ease-in-out infinite;
+}
+.btn--jitter:hover, .btn--jitter:focus-visible {
+  animation:
+    jitter-tremble 0.12s steps(2, jump-none) infinite,
+    jitter-hop 0.45s ease-in-out infinite;
+}
+@keyframes jitter-tremble {
+  0% { translate: 1.2px -0.8px; }
+  25% { translate: -1.3px 0.9px; }
+  50% { translate: 0.9px 1.2px; }
+  75% { translate: -0.8px -1.1px; }
+  100% { translate: 1.2px -0.8px; }
+}
+@keyframes jitter-burst {
+  0%, 62%, 100% { rotate: 0deg; scale: 1; }
+  66% { rotate: -6deg; scale: 1.08; }
+  70% { rotate: 5deg; scale: 1.08; }
+  74% { rotate: -5deg; scale: 1.06; }
+  78% { rotate: 4deg; scale: 1.06; }
+  82% { rotate: -2deg; scale: 1.03; }
+  86% { rotate: 0deg; scale: 1; }
+}
+@keyframes jitter-hop {
+  0%, 100% { rotate: -3deg; scale: 1.06; }
+  50% { rotate: 3deg; scale: 1.1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn--jitter, .btn--jitter:hover, .btn--jitter:focus-visible { animation: none; }
+}
