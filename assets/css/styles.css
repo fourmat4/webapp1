@@ -519,6 +519,8 @@ a { color: inherit; }
   width: 100%; height: 100%; min-height: 280px; object-fit: cover;
   border: 3px solid var(--ink); border-radius: calc(var(--radius) - 6px);
   background: var(--mist);
+  /* Fill the space the panel already has; a tall photo shouldn't stretch it */
+  contain: size; aspect-ratio: auto;
 }
 .stage-panel__body { padding-right: 44px; }
 .stage-panel h3 { font: 400 clamp(1.9rem, 4vw, 3rem)/1 var(--block); margin-bottom: 14px; }
@@ -537,7 +539,7 @@ a { color: inherit; }
 .stage-panel.stage--ink h3 { color: var(--yellow); }
 @media (max-width: 720px) {
   .stage-panel { grid-template-columns: 1fr; align-content: start; }
-  .stage-panel__photo { height: auto; min-height: 0; aspect-ratio: 4 / 3; }
+  .stage-panel__photo { height: auto; min-height: 0; aspect-ratio: 4 / 3; contain: none; }
   .stage-panel__body { padding-right: 0; }
   .stages-board.is-open .stages { display: none; }
 }
@@ -772,6 +774,8 @@ section[id] { scroll-margin-top: 72px; }
   font-weight: 700;
 }
 .site-footer__small { font-size: 0.9rem; color: var(--ink-soft); }
+.site-footer__credit { margin-top: 0.4em; font-size: 0.8rem; }
+.site-footer__credit a { color: inherit; }
 
 /* ---------- The Lineup page ---------- */
 .site-header nav a[aria-current="page"] { border-color: var(--red); }
