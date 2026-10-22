@@ -316,7 +316,7 @@ a { color: inherit; }
 .ethos {
   max-width: var(--max);
   margin: 0 auto;
-  padding: clamp(56px, 9vw, 112px) var(--gutter);
+  padding: 0 var(--gutter) clamp(56px, 9vw, 112px);
   display: grid;
   gap: clamp(28px, 5vw, 56px);
   justify-items: center;
@@ -404,7 +404,7 @@ a { color: inherit; }
 .stages-wrap {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 0 var(--gutter) clamp(56px, 9vw, 112px);
+  padding: clamp(56px, 9vw, 112px) var(--gutter);
 }
 .stages {
   list-style: none; margin: 0; padding: 0;
