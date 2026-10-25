@@ -913,6 +913,69 @@ main:has(> .newsletter:last-child) + .site-footer { padding-top: 0; }
 }
 .lineup-cta h2 { font: 400 clamp(1.8rem, 5vw, 3rem)/1.05 var(--display); text-wrap: balance; }
 
+/* ---------- Photo album page ---------- */
+.year-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.5rem; }
+.year-chips .chip { text-decoration: none; }
+.album-year {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 40px) var(--gutter) clamp(40px, 7vw, 80px);
+}
+.album-year + .album-year { border-top: 3px dashed rgba(38, 48, 61, 0.25); }
+.album-year__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; margin-bottom: clamp(18px, 3vw, 28px); }
+.album-year__title { font: 400 clamp(2.6rem, 8vw, 4.5rem)/1 var(--display); color: var(--blue-deep); }
+.album-year__head p { font-weight: 700; color: var(--ink-soft); }
+/* Masonry-style columns, so portrait and landscape photos sit together */
+.album { list-style: none; margin: 0; padding: 0; columns: 3 260px; column-gap: clamp(12px, 2vw, 20px); }
+.album li { break-inside: avoid; margin-bottom: clamp(12px, 2vw, 20px); }
+.album__photo {
+  display: block; width: 100%; padding: 0;
+  border: 3px solid var(--ink); border-radius: var(--radius);
+  overflow: hidden; background: var(--card);
+  box-shadow: var(--shadow);
+  cursor: zoom-in;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.album li:nth-child(3n+1) .album__photo { rotate: -0.6deg; }
+.album li:nth-child(3n+2) .album__photo { rotate: 0.5deg; }
+.album__photo:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--ink); }
+.album__photo img { display: block; width: 100%; height: auto; }
+@media (max-width: 520px) {
+  .album { columns: 2; }
+}
+
+.viewer {
+  width: 100vw; height: 100dvh; max-width: none; max-height: none;
+  margin: 0; padding: 0; border: 0;
+  background: rgba(20, 26, 34, 0.94);
+  color: var(--paper);
+  overscroll-behavior: contain;
+}
+.viewer[open] { display: grid; place-items: center; }
+.viewer::backdrop { background: transparent; }
+.viewer__img {
+  max-width: calc(100vw - 32px); max-height: calc(100dvh - 120px);
+  width: auto; height: auto;
+  border: 3px solid var(--paper); border-radius: var(--radius);
+  background: var(--card);
+}
+.viewer__count { position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; font: 400 0.95rem/1 var(--block); }
+.viewer__btn {
+  position: absolute;
+  width: 52px; height: 52px; border-radius: 50%;
+  border: 3px solid var(--paper); background: var(--ink); color: var(--paper);
+  font: 700 2rem/1 var(--body);
+  display: grid; place-items: center; padding: 0 0 4px;
+  cursor: pointer;
+}
+.viewer__btn:hover { background: var(--red); }
+.viewer__close { top: 16px; right: 16px; }
+.viewer__prev { left: 16px; top: 50%; translate: 0 -50%; }
+.viewer__next { right: 16px; top: 50%; translate: 0 -50%; }
+@media (max-width: 700px) {
+  .viewer__prev, .viewer__next { top: auto; bottom: 8px; translate: none; }
+}
+
 /* Peekers
    Festival stickers that bounce out from behind the screen edge or a card
    as their section scrolls into view, then tuck away again once it's past.

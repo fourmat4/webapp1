@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Photo Album · An Experience Festival</title>
+  <meta name="description" content="Photos from every year of An Experience Festival. An Experience is a music festival run by a group of friends who love dancing. June 2027 at The Grange Farm, Cambridge. Live bands, soundsystems from around the globe, a proper boozer and lots of nooks and crannies.">
+  <meta property="og:title" content="Photo Album · An Experience Festival">
+  <meta property="og:description" content="A music festival run by a group of friends who love dancing. June 2027, The Grange Farm, Cambridge.">
+  <meta property="og:image" content="assets/img/og.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#f3ede4">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/chonkyboi.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/comical-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="index.html"><img src="assets/img/logo-600.webp" width="600" height="56" alt="An Experience"></a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu"><span></span><span></span><span></span></button>
+    <nav id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html#stages">Stages</a></li>
+        <li><a href="index.html#soundsystems">Soundsystems</a></li>
+        <li><a href="index.html#tickets">Tickets</a></li>
+        <li><a href="index.html#info">Good to know</a></li>
+        <li><a href="index.html#past">Our parties</a></li>
+        <li><a href="photos.html" aria-current="page">Photos</a></li>
+        <li><a href="index.html#newsletter">Newsletter</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--small btn--red" href="https://www.skiddle.com/festivals/anexperience-festival/" target="_blank" rel="noopener">Tickets</a>
+  </header>
+
+  <main id="main">
+    <section class="has-peeks page-hero">
+      <div class="peek peek--right" style="--at: 4%; --size: 260px; --tilt: -12deg; --delay: 0s" aria-hidden="true"><img src="assets/img/peek/gramophone.webp" alt="" width="393" height="600" loading="lazy"></div>
+      <p class="eyebrow">Every year so far</p>
+      <h1 class="page-hero__title">Photo Album</h1>
+      <p class="page-hero__lede">Dancing, mates, soundsystems and a lot of mud. Pick a year, tap a photo to see it big.</p>
+      <nav class="year-chips" aria-label="Jump to a year"></nav>
+    </section>
+
+    <!--
+      ADDING A NEW YEAR
+      1. Put the photos in assets/img/photos/<year>/ (e.g. assets/img/photos/2027/).
+         Long side around 1600px, saved as .webp or .jpg.
+      2. Copy a whole <section class="album-year"> block below and paste it at the
+         TOP of the list, so the newest year comes first.
+      3. Change the year in id="y2027", id="y2027-title" and the <h2>, and the line under it.
+      4. For each photo, one <li> with its src, its width and height in pixels, and an alt
+         that says what's in it. Add or delete <li>s as needed.
+      The year buttons at the top of the page build themselves from these sections.
+    -->
+
+    <section class="album-year" id="y2026" aria-labelledby="y2026-title">
+      <header class="album-year__head">
+        <h2 class="album-year__title" id="y2026-title">2026</h2>
+        <p>Photos coming soon.</p>
+      </header>
+      <ul class="album">
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-tall.svg" width="800" height="1000" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-tall.svg" width="800" height="1000" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-tall.svg" width="800" height="1000" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
+      </ul>
+    </section>
+
+    <section class="album-year" id="y2025" aria-labelledby="y2025-title">
+      <header class="album-year__head">
+        <h2 class="album-year__title" id="y2025-title">2025</h2>
+        <p>Photos coming soon.</p>
+      </header>
+      <ul class="album">
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-tall.svg" width="800" height="1000" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-tall.svg" width="800" height="1000" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-tall.svg" width="800" height="1000" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
+      </ul>
+    </section>
+  </main>
+
+  <dialog class="viewer" aria-label="Photo viewer">
+    <img class="viewer__img" alt="">
+    <p class="viewer__count" aria-live="polite"></p>
+    <button class="viewer__btn viewer__close" type="button" aria-label="Close">&times;</button>
+    <button class="viewer__btn viewer__prev" type="button" aria-label="Previous photo">&lsaquo;</button>
+    <button class="viewer__btn viewer__next" type="button" aria-label="Next photo">&rsaquo;</button>
+  </dialog>
+
+  <footer class="site-footer">
+    <ul class="site-footer__links">
+      <li><a href="https://www.skiddle.com/festivals/anexperience-festival/" target="_blank" rel="noopener">Tickets</a></li>
+      <li><a href="https://www.headfirstbristol.co.uk/checkout/anexperiencepresents-" target="_blank" rel="noopener">Club shows</a></li>
+      <li><a href="https://www.instagram.com/anexperience_presents/" target="_blank" rel="noopener">Instagram</a></li>
+    </ul>
+    <p class="site-footer__small">An Experience Presents · Cardboard Productions Ltd</p>
+    <p class="site-footer__small site-footer__credit">Site Designed and Built by Josh Courtice · <a href="mailto:CourticeUK@gmail.com">CourticeUK@gmail.com</a></p>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/photos.js" defer></script>
+</body>
+</html>
