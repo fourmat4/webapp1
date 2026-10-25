@@ -278,12 +278,38 @@
     peeks.forEach(function (p) { p.classList.add("is-out"); });
     return;
   }
+  // A sticker only pops once its picture has loaded and been drawn in its
+  // hidden spot, so a fast scroll never shows it already out with no bounce.
+  function ready(img) {
+    if (img.complete && img.naturalWidth) return Promise.resolve();
+    return new Promise(function (res) {
+      img.addEventListener("load", res, { once: true });
+      img.addEventListener("error", res, { once: true });
+    });
+  }
   const io = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
-      entry.target.classList.toggle("is-out", entry.isIntersecting);
+      const peek = entry.target;
+      if (!entry.isIntersecting) { peek.dataset.want = ""; peek.classList.remove("is-out"); return; }
+      peek.dataset.want = "1";
+      const img = peek.querySelector("img");
+      if (!img || (img.complete && img.naturalWidth && img.dataset.shown)) return peek.classList.add("is-out");
+      img.loading = "eager";
+      ready(img).then(function () {
+        img.dataset.shown = "1";
+        requestAnimationFrame(function () { requestAnimationFrame(function () {
+          if (peek.dataset.want) peek.classList.add("is-out");
+        }); });
+      });
     });
   }, { rootMargin: "-12% 0px -12% 0px" });
   peeks.forEach(function (p) { io.observe(p); });
+  // Fetch the rest in the background once the page is up, so they're ready before you get there.
+  window.addEventListener("load", function () {
+    setTimeout(function () {
+      peeks.forEach(function (p) { const img = p.querySelector("img"); if (img) img.loading = "eager"; });
+    }, 300);
+  });
 })();
 
 // Burger menu (narrow screens): toggles the nav drop-down; closes on a
