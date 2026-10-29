@@ -385,6 +385,28 @@ a { color: inherit; }
   .ribbon__track { animation: none; }
 }
 
+/* Photo teaser: two favourites that open the album */
+.snaps {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter) clamp(56px, 9vw, 112px);
+  text-align: center;
+}
+.snaps__grid { display: grid; gap: clamp(16px, 3vw, 32px); grid-template-columns: 1fr; }
+@media (min-width: 720px) { .snaps__grid { grid-template-columns: 1fr 1fr; } }
+.snap {
+  display: block;
+  border: 3px solid var(--ink); border-radius: var(--radius);
+  overflow: hidden; background: var(--card);
+  box-shadow: var(--shadow);
+  rotate: -1.2deg;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.snap + .snap { rotate: 1.4deg; }
+.snap:hover { transform: translate(-3px, -3px) scale(1.01); box-shadow: 10px 10px 0 var(--ink); }
+.snap img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.snaps__more { margin-top: clamp(24px, 4vw, 40px); }
+
 /* Ethos: short lines scattered like stickers and speech bubbles */
 .ethos {
   max-width: var(--max);
@@ -456,6 +478,7 @@ a { color: inherit; }
 }
 
 /* Section heads */
+.section-head--center { margin-inline: auto; text-align: center; }
 .section-head {
   max-width: 44rem;
   margin-bottom: clamp(24px, 4vw, 40px);
@@ -477,9 +500,9 @@ a { color: inherit; }
   display: grid; gap: 18px;
   grid-template-columns: 1fr;
 }
-/* 10 cards: 5 across on wide screens, 2 across in between, so no row is left half empty */
-@media (min-width: 560px) { .stages, .stages-more { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1100px) { .stages, .stages-more { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; } .stage { padding: 20px 18px 22px; } .stage h3 { font-size: 1.3rem; } }
+/* 11 cards plus the Lineup TBA sign: 4 across on wide screens, 2 across in between, so every row is full */
+@media (min-width: 560px) { .stages { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .stages { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; } .stage { padding: 20px 18px 22px; } .stage h3 { font-size: 1.3rem; } }
 .stage {
   border: 3px solid var(--ink);
   border-radius: var(--radius);
@@ -595,13 +618,9 @@ a { color: inherit; }
   .stage::before, .stage-panel__close, .stages { transition: none; }
 }
 
-/* "Lineup TBA" sign: laid out on the same grid as the stage cards so it's one card wide */
-.stages-more {
-  margin-top: clamp(28px, 4vw, 44px);
-  display: grid; gap: 18px;
-}
-@media (min-width: 1100px) { .stages-more { gap: 16px; } }
-.stages-more__sign { display: block; width: 100%; height: auto; }
+/* "Lineup TBA" sign: sits in the last grid spot, one card wide */
+.stages-sign { display: grid; place-items: center; }
+.stages-sign img { display: block; width: 100%; height: auto; }
 
 
 /* Soundsystems */
