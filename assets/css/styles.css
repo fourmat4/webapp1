@@ -372,7 +372,7 @@ a { color: inherit; }
 }
 .ribbon__track {
   display: flex; width: max-content;
-  animation: ribbon 40s linear infinite;
+  animation: ribbon 60s linear infinite;
 }
 .ribbon span {
   font: 400 var(--rib-font)/1 var(--block);
