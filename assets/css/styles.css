@@ -500,7 +500,7 @@ a { color: inherit; }
   display: grid; gap: 18px;
   grid-template-columns: 1fr;
 }
-/* 11 cards plus the Lineup TBA sign: 4 across on wide screens, 2 across in between, so every row is full */
+/* 11 cards: 4 across on wide screens, 2 across in between */
 @media (min-width: 560px) { .stages { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1100px) { .stages { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; } .stage { padding: 20px 18px 22px; } .stage h3 { font-size: 1.3rem; } }
 .stage {
@@ -618,9 +618,8 @@ a { color: inherit; }
   .stage::before, .stage-panel__close, .stages { transition: none; }
 }
 
-/* "Lineup TBA" sign: sits in the last grid spot, one card wide */
-.stages-sign { display: grid; place-items: center; }
-.stages-sign img { display: block; width: 100%; height: auto; }
+/* 10 stages and the Boozer: the Boozer runs two cards wide so the last row is full */
+@media (min-width: 560px) { .stages > .stage--ink:last-child { grid-column: span 2; } }
 
 
 /* Soundsystems */
