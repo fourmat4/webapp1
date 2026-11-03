@@ -995,6 +995,11 @@ main:has(> .newsletter:last-child) + .site-footer { padding-top: 0; }
   .viewer__prev, .viewer__next { top: auto; bottom: 8px; translate: none; }
 }
 
+/* 404 page */
+.lost { min-height: calc(100dvh - 240px); }
+.lost .page-hero__title { max-width: 10ch; }
+.lost__links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 1.75rem; }
+
 /* Peekers
    Festival stickers that bounce out from behind the screen edge or a card
    as their section scrolls into view, then tuck away again once it's past.
