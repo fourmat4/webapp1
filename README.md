@@ -15,7 +15,7 @@ python3 -m http.server 8000
 - `index.html`: the homepage
 - `photos.html`: the photo album, one section per year (instructions in a comment above the years)
 - `404.html`: page-not-found page (Netlify serves it automatically; its links start with `/` so it works at any address)
-- `robots.txt`, `sitemap.xml`: for search engines. They and each page's canonical link assume the site lives at https://anexperience.co.uk
+- `robots.txt`, `sitemap.xml`: for search engines. They and each page's canonical link assume the site lives at https://www.anexperience.co.uk
 - `lineup.html`: The Lineup (hidden from search engines until the lineup is announced), one card per artist (instructions for adding artists are in a comment above the cards)
 - `assets/css/styles.css`: styles, with the flyer palette as CSS variables at the top
 - `assets/js/main.js`: newsletter form handling
