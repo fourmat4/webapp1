@@ -48,47 +48,77 @@
       ADDING A NEW YEAR
       1. Put the photos in assets/img/photos/<year>/ (e.g. assets/img/photos/2027/).
          Long side around 1600px, saved as .webp or .jpg.
-      2. Copy a whole <section class="album-year"> block below and paste it at the
+      2. Copy the whole <section class="album-year"> block below and paste it at the
          TOP of the list, so the newest year comes first.
       3. Change the year in id="y2027", id="y2027-title" and the <h2>, and the line under it.
-      4. For each photo, one <li> with its src, its width and height in pixels, and an alt
-         that says what's in it. Add or delete <li>s as needed.
+      4. For each photo, one <li>: src is a small version (around 600px wide) for the grid,
+         data-full is the big one for the viewer (around 1600px), plus its width and height
+         in pixels and an alt that says what's in it. Add or delete <li>s as needed.
       The year buttons at the top of the page build themselves from these sections.
     -->
-
-    <section class="album-year" id="y2026" aria-labelledby="y2026-title">
-      <header class="album-year__head">
-        <h2 class="album-year__title" id="y2026-title">2026</h2>
-        <p>Photos coming soon.</p>
-      </header>
-      <ul class="album">
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-tall.svg" width="800" height="1000" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-tall.svg" width="800" height="1000" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-tall.svg" width="800" height="1000" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
-      </ul>
-    </section>
 
     <section class="album-year" id="y2025" aria-labelledby="y2025-title">
       <header class="album-year__head">
         <h2 class="album-year__title" id="y2025-title">2025</h2>
-        <p>Photos coming soon.</p>
+        <p>Lakes, big wheels, gospel choirs and a lot of hands in the air.</p>
       </header>
       <ul class="album">
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-tall.svg" width="800" height="1000" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-tall.svg" width="800" height="1000" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-tall.svg" width="800" height="1000" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
-        <li><button class="album__photo" type="button"><img src="assets/img/photo-placeholder-wide.svg" width="1200" height="800" alt="" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/01-sm.webp" data-full="assets/img/photos/2025/01.webp" width="600" height="750" alt="A big top glowing with festoon lights at night, reflected in the lake" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/02-sm.webp" data-full="assets/img/photos/2025/02.webp" width="600" height="750" alt="Friends walking across the field towards the sunset" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/03-sm.webp" data-full="assets/img/photos/2025/03.webp" width="600" height="900" alt="Two people hugging at dusk in the field" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/04-sm.webp" data-full="assets/img/photos/2025/04.webp" width="600" height="900" alt="Dancing in front of the hay bale walls, with people sat on top" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/05-sm.webp" data-full="assets/img/photos/2025/05.webp" width="600" height="750" alt="Someone kicking a leg up in front of the big wheel" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/06-sm.webp" data-full="assets/img/photos/2025/06.webp" width="600" height="900" alt="A crowd walking up to a stage built from hay bales" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/07-sm.webp" data-full="assets/img/photos/2025/07.webp" width="600" height="750" alt="People dancing at dusk with the big wheel lit up behind" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/08-sm.webp" data-full="assets/img/photos/2025/08.webp" width="600" height="750" alt="Dancing in the patterned tent, lit up gold" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/09-sm.webp" data-full="assets/img/photos/2025/09.webp" width="600" height="400" alt="A packed crowd under the red and blue patterned tent roof" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/10-sm.webp" data-full="assets/img/photos/2025/10.webp" width="600" height="900" alt="Hands up under the patterned tent roof" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/11-sm.webp" data-full="assets/img/photos/2025/11.webp" width="600" height="400" alt="A woman dancing with one arm in the air by the DJ booth" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/12-sm.webp" data-full="assets/img/photos/2025/12.webp" width="600" height="750" alt="A busy dancefloor under hanging records" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/13-sm.webp" data-full="assets/img/photos/2025/13.webp" width="600" height="750" alt="Two friends hugging and laughing" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/14-sm.webp" data-full="assets/img/photos/2025/14.webp" width="600" height="900" alt="A gospel choir in blue and white robes singing" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/15-sm.webp" data-full="assets/img/photos/2025/15.webp" width="600" height="750" alt="A gospel singer throwing their arms up to the crowd" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/16-sm.webp" data-full="assets/img/photos/2025/16.webp" width="600" height="750" alt="Hands in the air in front of the An Experience sign in the woods" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/17-sm.webp" data-full="assets/img/photos/2025/17.webp" width="600" height="900" alt="A musician singing and playing a wooden flute" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/18-sm.webp" data-full="assets/img/photos/2025/18.webp" width="600" height="900" alt="Muddy wellies and orange waterproof trousers mid-dance" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/19-sm.webp" data-full="assets/img/photos/2025/19.webp" width="600" height="750" alt="A DJ playing under the red-lit wooden roof" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/20-sm.webp" data-full="assets/img/photos/2025/20.webp" width="600" height="900" alt="Two singers performing on a warm-lit stage" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/21-sm.webp" data-full="assets/img/photos/2025/21.webp" width="600" height="750" alt="Crowd surfers in front of the An Experience sign at night" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/22-sm.webp" data-full="assets/img/photos/2025/22.webp" width="600" height="750" alt="Friends dancing in front of the lit-up An Experience sign" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/23-sm.webp" data-full="assets/img/photos/2025/23.webp" width="600" height="900" alt="A DJ in glasses cueing up a record" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/24-sm.webp" data-full="assets/img/photos/2025/24.webp" width="600" height="400" alt="The big top and big wheel on the hill at dusk" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/25-sm.webp" data-full="assets/img/photos/2025/25.webp" width="600" height="900" alt="Downbeat Melody selectors playing vinyl" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/26-sm.webp" data-full="assets/img/photos/2025/26.webp" width="600" height="750" alt="A crowd under the trees and lanterns in the woods stage" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/27-sm.webp" data-full="assets/img/photos/2025/27.webp" width="600" height="750" alt="A woman beaming with her eyes closed in the crowd" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/28-sm.webp" data-full="assets/img/photos/2025/28.webp" width="600" height="750" alt="Two guitarists playing on a colourful stage" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/29-sm.webp" data-full="assets/img/photos/2025/29.webp" width="600" height="750" alt="Dancing in a fringed skirt in front of the stage" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/30-sm.webp" data-full="assets/img/photos/2025/30.webp" width="600" height="750" alt="A steel pan band playing to a smiling crowd outside" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/31-sm.webp" data-full="assets/img/photos/2025/31.webp" width="600" height="897" alt="A pirate flag and lookout over a crowd at night" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/32-sm.webp" data-full="assets/img/photos/2025/32.webp" width="600" height="900" alt="Someone grinning inside a giant inflatable bubble" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/33-sm.webp" data-full="assets/img/photos/2025/33.webp" width="600" height="900" alt="Five people jumping off the jetty into the lake together" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/34-sm.webp" data-full="assets/img/photos/2025/34.webp" width="600" height="750" alt="Friends singing along under hanging records" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/35-sm.webp" data-full="assets/img/photos/2025/35.webp" width="600" height="750" alt="Swimmers in the lake with the big wheel on the hill" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/36-sm.webp" data-full="assets/img/photos/2025/36.webp" width="600" height="750" alt="Someone doing a backflip off the jetty into the lake" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/37-sm.webp" data-full="assets/img/photos/2025/37.webp" width="600" height="750" alt="Two DJs smiling behind the decks under red light" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/38-sm.webp" data-full="assets/img/photos/2025/38.webp" width="600" height="750" alt="Someone standing in the lake with their arms up" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/39-sm.webp" data-full="assets/img/photos/2025/39.webp" width="600" height="750" alt="Two people dancing on top of a hay bale" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/40-sm.webp" data-full="assets/img/photos/2025/40.webp" width="600" height="750" alt="A wooden treehouse lookout over the crowd in the woods" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/41-sm.webp" data-full="assets/img/photos/2025/41.webp" width="600" height="750" alt="Someone in a hi-vis tabard striking a pose by a red tent" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/42-sm.webp" data-full="assets/img/photos/2025/42.webp" width="600" height="750" alt="A breakdancer in a circle of the crowd in the woods" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/43-sm.webp" data-full="assets/img/photos/2025/43.webp" width="600" height="400" alt="Someone dancing through a graffitied entrance in a hi-vis vest" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/44-sm.webp" data-full="assets/img/photos/2025/44.webp" width="600" height="400" alt="A crowd under yellow bunting and paper flowers in the woods" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/45-sm.webp" data-full="assets/img/photos/2025/45.webp" width="600" height="750" alt="A packed night crowd under the giant paper flowers" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/47-sm.webp" data-full="assets/img/photos/2025/47.webp" width="600" height="900" alt="A singer with arms out to a packed crowd under the An Experience sign" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/48-sm.webp" data-full="assets/img/photos/2025/48.webp" width="600" height="750" alt="Dancing under yellow bunting and fairy lights at night" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/49-sm.webp" data-full="assets/img/photos/2025/49.webp" width="600" height="900" alt="Someone crowd surfing under a paper lantern" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/50-sm.webp" data-full="assets/img/photos/2025/50.webp" width="600" height="401" alt="People relaxing on rugs inside a cosy striped tent" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/51-sm.webp" data-full="assets/img/photos/2025/51.webp" width="600" height="400" alt="A DJ in the glow of the booth lights" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/52-sm.webp" data-full="assets/img/photos/2025/52.webp" width="596" height="900" alt="The big wheel lit up at dusk above the caravans" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/53-sm.webp" data-full="assets/img/photos/2025/53.webp" width="600" height="900" alt="A jetty reflected in the lake with the big wheel behind" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/54-sm.webp" data-full="assets/img/photos/2025/54.webp" width="600" height="900" alt="The big top and big wheel on a grey day" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/55-sm.webp" data-full="assets/img/photos/2025/55.webp" width="600" height="900" alt="The woods stage speakers under the trees and paper flowers" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/56-sm.webp" data-full="assets/img/photos/2025/56.webp" width="600" height="750" alt="The An Experience sign above the campsite tents" loading="lazy"></button></li>
+        <li><button class="album__photo" type="button"><img src="assets/img/photos/2025/57-sm.webp" data-full="assets/img/photos/2025/57.webp" width="600" height="750" alt="A path into the woods between two tall hay bales" loading="lazy"></button></li>
       </ul>
     </section>
   </main>

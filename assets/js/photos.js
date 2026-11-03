@@ -23,7 +23,7 @@
   function show(i) {
     at = (i + list.length) % list.length;
     const img = list[at];
-    big.src = img.currentSrc || img.src;
+    big.src = img.dataset.full || img.currentSrc || img.src;
     big.alt = img.alt;
     const year = img.closest(".album-year").querySelector(".album-year__title").textContent;
     count.textContent = year + " · " + (at + 1) + " of " + list.length;
