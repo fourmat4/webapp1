@@ -745,13 +745,15 @@ section[id] { scroll-margin-top: 72px; }
   margin: 0 auto;
   padding: clamp(56px, 9vw, 112px) var(--gutter);
 }
+/* Five parties: one row on wide screens; on smaller ones a short last row sits in the middle */
 .past__grid {
+  --cols: 2;
   list-style: none; margin: 0; padding: 0;
-  display: grid; gap: 18px;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 18px;
 }
-@media (min-width: 600px) { .past__grid { grid-template-columns: repeat(3, 1fr); } }
-@media (min-width: 1000px) { .past__grid { grid-template-columns: repeat(6, 1fr); } }
+.past__grid > li { flex: 0 0 calc((100% - (var(--cols) - 1) * 18px) / var(--cols)); }
+@media (min-width: 600px) { .past__grid { --cols: 3; } }
+@media (min-width: 1000px) { .past__grid { --cols: 5; } }
 .past__grid li {
   border: 3px solid var(--ink);
   border-radius: 14px;
