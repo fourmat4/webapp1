@@ -770,6 +770,7 @@ section[id] { scroll-margin-top: 72px; }
 .past__text span { font: 400 0.85rem/1.2 var(--block); }
 .past__text p { font-size: 0.85rem; line-height: 1.35; margin: 0; }
 .past__outro { margin-top: clamp(20px, 3vw, 32px); max-width: 44rem; font-size: 1.1rem; }
+.past__more { margin-top: clamp(20px, 3vw, 28px); }
 
 /* Newsletter */
 .newsletter {
