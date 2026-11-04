@@ -655,6 +655,13 @@ a { color: inherit; }
 .system--coral { --sys: var(--coral); }
 .system--mustard { --sys: var(--mustard); }
 .system--pink { --sys: var(--pink); }
+/* Linked cards: the whole card is clickable, with a little lift on hover */
+.system { position: relative; transition: transform .2s ease; }
+.system__link { color: inherit; text-decoration: none; }
+.system__link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.system:has(.system__link):hover { transform: translateY(-4px) rotate(-0.5deg); }
+.system__link:focus-visible::after { outline: 3px solid var(--ink); outline-offset: 4px; }
+@media (prefers-reduced-motion: reduce) { .system:has(.system__link):hover { transform: none; } }
 
 /* Good to know */
 .info {
