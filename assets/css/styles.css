@@ -385,15 +385,45 @@ a { color: inherit; }
   .ribbon__track { animation: none; }
 }
 
-/* Photo teaser: two favourites that open the album */
+/* Photo teaser: a carousel of favourites that open the album */
 .snaps {
   max-width: var(--max);
   margin: 0 auto;
   padding: 0 var(--gutter) clamp(56px, 9vw, 112px);
   text-align: center;
 }
-.snaps__grid { display: grid; gap: clamp(16px, 3vw, 32px); grid-template-columns: 1fr; }
-@media (min-width: 720px) { .snaps__grid { grid-template-columns: 1fr 1fr; } }
+/* Carousel: one photo at a time on phones, two side by side on bigger screens */
+.carousel { position: relative; }
+.carousel__track {
+  --gap: clamp(16px, 3vw, 32px);
+  display: grid; grid-auto-flow: column; grid-auto-columns: 100%; gap: var(--gap);
+  margin: 0; padding: 14px 8px 22px; list-style: none;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scrollbar-width: none;
+}
+.carousel__track::-webkit-scrollbar { display: none; }
+@media (min-width: 720px) { .carousel__track { grid-auto-columns: calc((100% - var(--gap)) / 2); } }
+.carousel__slide { scroll-snap-align: start; min-width: 0; }
+.carousel__slide:nth-child(even) .snap { rotate: 1.4deg; }
+.carousel__btn {
+  position: absolute; top: 50%; z-index: 2; translate: 0 -50%;
+  width: 52px; height: 52px; border-radius: 50%;
+  border: 3px solid var(--ink); background: var(--yellow); color: var(--ink);
+  font: 400 2.2rem/1 var(--body); padding-bottom: 4px; cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: opacity 0.2s ease, transform 0.15s ease;
+}
+.carousel__btn--prev { left: -10px; }
+.carousel__btn--next { right: -10px; }
+.carousel__btn:hover:not(:disabled) { transform: scale(1.08); }
+.carousel__btn:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.carousel__btn:disabled { opacity: 0; pointer-events: none; }
+.carousel.is-static .carousel__btn { display: none; }
+@media (min-width: 1200px) {
+  .carousel__btn--prev { left: -30px; }
+  .carousel__btn--next { right: -30px; }
+}
+@media (prefers-reduced-motion: reduce) { .carousel__track { scroll-behavior: auto; } }
 .snap {
   display: block;
   border: 3px solid var(--ink); border-radius: var(--radius);
@@ -402,7 +432,6 @@ a { color: inherit; }
   rotate: -1.2deg;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.snap + .snap { rotate: 1.4deg; }
 .snap:hover { transform: translate(-3px, -3px) scale(1.01); box-shadow: 10px 10px 0 var(--ink); }
 .snap img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
 .snaps__more { margin-top: clamp(24px, 4vw, 40px); }

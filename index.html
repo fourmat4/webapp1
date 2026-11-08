@@ -322,16 +322,22 @@
       </div>
     </section>
 
-    <!-- PHOTOS: two favourites, both open the photo album -->
+    <!-- PHOTOS: a carousel of favourites, all open the photo album -->
     <section class="has-peeks snaps" aria-labelledby="snaps-title">
       <div class="peek peek--left" style="--at: 22%; --size: 230px; --tilt: 10deg; --delay: 0s" aria-hidden="true"><img src="assets/img/peek/gramophone.webp" alt="" width="393" height="600" loading="lazy"></div>
       <header class="section-head section-head--center">
         <p class="eyebrow">Photo album</p>
         <h2 id="snaps-title">Here's what you missed</h2>
       </header>
-      <div class="snaps__grid">
-        <a class="snap" href="photos.html"><img src="assets/img/snap-crowd-1200.webp" srcset="assets/img/snap-crowd-700.webp 700w, assets/img/snap-crowd-1200.webp 1200w" sizes="(max-width: 720px) 100vw, 600px" width="1200" height="800" alt="A crowd with hands in the air in front of the wooden Main Stage in the woods" loading="lazy"></a>
-        <a class="snap" href="photos.html"><img src="assets/img/snap-singer-1200.webp" srcset="assets/img/snap-singer-700.webp 700w, assets/img/snap-singer-1200.webp 1200w" sizes="(max-width: 720px) 100vw, 600px" width="1200" height="800" alt="A singer in a cowrie shell necklace beaming at the camera on a warm-lit stage" loading="lazy"></a>
+      <!-- Carousel: shows these two photos, or every photo in the shared Google Drive
+           folder once data-drive-folder and data-drive-key are filled in (see README). -->
+      <div class="carousel" data-drive-folder="" data-drive-key="">
+        <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Previous photo">&#8249;</button>
+        <ul class="carousel__track" aria-label="Festival photos">
+          <li class="carousel__slide"><a class="snap" href="photos.html"><img src="assets/img/snap-crowd-1200.webp" srcset="assets/img/snap-crowd-700.webp 700w, assets/img/snap-crowd-1200.webp 1200w" sizes="(max-width: 720px) 100vw, 600px" width="1200" height="800" alt="A crowd with hands in the air in front of the wooden Main Stage in the woods" loading="lazy"></a></li>
+          <li class="carousel__slide"><a class="snap" href="photos.html"><img src="assets/img/snap-singer-1200.webp" srcset="assets/img/snap-singer-700.webp 700w, assets/img/snap-singer-1200.webp 1200w" sizes="(max-width: 720px) 100vw, 600px" width="1200" height="800" alt="A singer in a cowrie shell necklace beaming at the camera on a warm-lit stage" loading="lazy"></a></li>
+        </ul>
+        <button class="carousel__btn carousel__btn--next" type="button" aria-label="Next photo">&#8250;</button>
       </div>
       <p class="snaps__more"><a class="btn btn--red" href="photos.html">See the photo album</a></p>
     </section>
@@ -498,5 +504,6 @@
   </footer>
 
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/carousel.js" defer></script>
 </body>
 </html>

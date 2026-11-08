@@ -29,3 +29,12 @@ python3 -m http.server 8000
 - Newsletter form `action` for a mailing list provider. Search `index.html` for `PLACEHOLDER`.
 
 Content comes from the current site, anexperience.co.uk, and the festival's Skiddle page.
+
+## Photo carousel ("Here's what you missed")
+
+The carousel shows the two photos in `index.html` until a shared Google Drive
+folder is connected. To connect one, fill in `data-drive-folder` (the folder ID
+from its link) and `data-drive-key` (a Google API key with the Drive API
+enabled, restricted to the site's domain) on the `.carousel` element. The folder
+must be shared as "Anyone with the link: Viewer". Every image in it then shows,
+newest first; if Drive can't be reached the two built-in photos stay.
